@@ -27,7 +27,7 @@ The goals and principles of musicmap to which to abide are as follows:
 
 It is recommended to check the [glossary](https://github.com/oceanprotocol/musicmap/wiki/1.-Quick-Musicmap-Glossary) list for project-specific terms.
 
-More information (ontology, list of functionalities, roadmap, research definitions,...) can be found in the Google Doc [musicmap spreadsheets](https://docs.google.com/spreadsheets/d/1OYCkgvwwHP_sSMbNA7i0XvSVGFVsgFnAwF-XGv0MTuk/edit?usp=sharing). 
+More information (_ontology, list of functionalities, roadmap, research definitions,..._) can be found in the Google Doc [musicmap spreadsheets](https://docs.google.com/spreadsheets/d/1OYCkgvwwHP_sSMbNA7i0XvSVGFVsgFnAwF-XGv0MTuk/edit?usp=sharing). 
 
 For the bigger story that ties in the original musicmap theory chapters with the new goals and architecture (though slightly outdated and more subject to change), please visit the [Musicmap Enhancement Protocol Paper](https://docs.google.com/document/d/1auYC-DZk3ubqx6F4XqqZi0mJJHT1-oq8v7V2Fqw8-h4/edit?usp=sharing).
 
@@ -47,7 +47,8 @@ The various actors in the musicmap ecosystem are as follows:
 Consumers are users of the platform who want to browse for music (=consuming the data). Anyone who likes music can be a consumer. Consumers do not need authentication or liquidity.
 
 ### Contributor
-Contributors add value to the network by proposing Data Entries or Nexi. Contributors must have a wallet and a minimum liquidity as they will have to put up stake in order to propose a Data Entry. Since we are dealing with very small amounts of data with little value, the stake must be extremely minimal. Since musicmap relies on a very large amount of contributors, and particularly outside the blockchain community, authentication and onboarding must show the lowest possible threshold. 
+Contributors add value to the network by proposing Data Entries or Nexi. Contributors must have a wallet and a minimum liquidity as they will have to put up stake in order to propose a Data Entry. Since we are dealing with very small amounts of data with little value, the stake must be extremely minimal. Since musicmap relies on a very large amount of contributors, and particularly outside the blockchain community, authentication and onboarding must show the lowest possible threshold.
+
 There are different types of Contributors:
 _Nexus Contributors:_
 They propose new Data Entries within an existing Nexus.
@@ -57,6 +58,7 @@ Protocol to propose and accept new data from super-genre contributors will be mu
 
 ### Curator
 Curators judiciously maintain the different registries by voting bad entries out and good ones in. Curators also need to have a wallet and liquidity. The rules when an actor can become a curator are not yet clear. Normally, curators are bound either to their Nexus or their super-genre and thus can only curate their respective registries or markets. Being a curator across different markets is possible if the curators are active in those markets.
+
 There are different types of Curators:
 _Nexus Curators:_
 They curate a TCR, thus are only required for binary voting. They either vote on a new proposal of Data Entry for a certain Nexus, or they challenge an existing registry Data Entry.
