@@ -52,6 +52,7 @@ Contributors add value to the network by proposing Data Entries or Nexi. Contrib
 There are different types of Contributors:
 _Nexus Contributors:_
 They propose new Data Entries within an existing Nexus.
+
 _Super-Genre Contributors:_
 They propose new Nexi within an existing Super-Genre.
 Protocol to propose and accept new data from super-genre contributors will be much more rigorous and with a substantial higher threshold and different parameters than Nexus contributions.
@@ -62,5 +63,6 @@ Curators judiciously maintain the different registries by voting bad entries out
 There are different types of Curators:
 _Nexus Curators:_
 They curate a TCR, thus are only required for binary voting. They either vote on a new proposal of Data Entry for a certain Nexus, or they challenge an existing registry Data Entry.
+
 _Super-Genre Curators:_ 
 They curate which Nexi are accepted in the network and which aren’t. This is rather some sort of a Curation Market where the best Nexi will surface and be displayed, according to a certain ranking or reputation. Survival of the fittest will eventually widen the gap between the high quality markets and the low quality ones. Thus introducing an observable threshold under which low-quality super-genres will be excluded from the carta and the high quality ones.
