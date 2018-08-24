@@ -13,15 +13,15 @@ All this data will be organized by genre. Genres will form the main building blo
 
 ## Motivation & Mission
 
-The goals and principles of musicmap to which to abide are as follows:
+There are 4 main goals and principles of musicmap, which all have both an active and passive component because it is a network by the people for the people:
 
-1. To provide a music explorer service that has two unique benefits. First combining different 3rd party providers into one, thus opening a massive library of music from within the same platform while also maintaining all these entries in a clean and structured manner. Second and even more important: allowing people to discover music in an active way and therefore regaining the satisfaction of finding music themselves instead of through recommendations and this in a highly attractive visual interface based around genres; the digital equivalent of the record store.
+1. **Explore <> Plot**: To provide a music explorer service that has two unique benefits. First combining different 3rd party providers into one, thus opening a massive library of music from within the same platform while also maintaining all these entries in a clean and structured manner. Second and even more important: allowing people to discover music in an active way and therefore regaining the satisfaction of finding music themselves instead of through recommendations and this in a highly attractive visual interface based around genres; the digital equivalent of the record store.
 
-2. Concentrate information about music history and sociology in one place, where it can be curated and evaluated and freely made available to the public, in order to educate about music genres without bias or censorship.
+2. **Learn <> Inform**: Concentrate information about music history and sociology in one place, where it can be curated and evaluated and freely made available to the public, in order to educate about music genres without bias or censorship.
 
-3. Give benefits to the long tail artists by working in a completely transparant white box ecosystem that does not use black box algorithms and does not promote the most popular artists. Each artist has the same chance of being discovered as the next one.
+3. **Grow <> Nurture**: Give benefits to the long tail artists by working in a completely transparant white box ecosystem that does not use black box algorithms and does not promote the most popular artists. Each artist has the same chance of being discovered as the next one.
 
-4. Bring communities together around similar music and enabling them to govern the archives themselves. 
+4. **Unite <> Build**: Bring communities together around similar music and enabling them to govern the archives themselves. 
 
 
 ## Papers and Information
@@ -37,10 +37,13 @@ For the bigger story that ties in the original musicmap theory chapters with the
 
 <overview graph> here
 
-The architecture can be divided into three large divisions.
+The architecture can be divided into three large **divisions**.
 * Front end UI/UX (including content), combination of HTML, CSS, 3D.js and Canvas.
 * Off-chain or hybrid back end data storage and data functions.
 * On-chain governance framework with curation building blocks and native token.
+
+The final architecture can also be divided into three **tiers**, which follow the evolution of releases.
+With each release, an additional tier and complexity will be added to the network.
 
 
 ## Actors
