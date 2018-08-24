@@ -1,2 +1,59 @@
 # musicmap
-MusicMap Repository
+
+
+## Abstract
+
+[Musicmap](https://www.musicmap.info) is a platform that offers free or commons data between providers and consumers, also described as contributors. It can be seen as a fairly simple marketplace that does not hold physical data, does not require proof of consumption, or any type of data protection. On the other hand, it will have complex and experimental curation building blocks (TCR variants) and a very challenging dynamic UI linked to the registry framework.
+
+Musicmap will share non-physical data (URL, links) primarily between the common (i.e. non-business) public (C2C). Providers (aka Contributors in this case) are anyone who is motivated to bring structure in a chaotic mass of digital music archives, and who wants to contribute to musicmap’s goals as described in the original purpose paragraph and outlined below. Consumers in this case (aka Users) are basically anyone who likes music.
+
+All this data will be organized by genre. Genres will form the main building blocks to structure this archive and the capability of musicmap to achieve this in a more or less succesful manner, is what makes it unique. Contributors can create their own lists based on genre, which will automatically deploy the right smart contracts and - if needed - a new token. Contributors can eventually also build communities around these genre lists and organize or govern towards certain goal (like tribes), e.g. making an agenda for concerts and parties, making a list of new and unknown artists, rallying community meetups, etc.
+
+
+## Motivation
+
+The goals and principles of musicmap to which to abide are as follows:
+
+1. To provide a music explorer service that has two unique benefits. First combining different 3rd party providers into one, thus opening a massive library of music from within the same platform while also maintaining all these entries in a clean and structured manner. Second and even more important: allowing people to discover music in an active way and therefore regaining the satisfaction of finding music themselves instead of through recommendations and this in a highly attractive visual interface based around genres; the digital equivalent of the record store.
+
+2. Concentrate information about music history and sociology in one place, where it can be curated and evaluated and freely made available to the public, in order to educate about music genres without bias or censorship.
+
+3. Give benefits to the long tail artists by working in a completely transparant white box ecosystem that does not use black box algorithms and does not promote the most popular artists. Each artist has the same chance of being discovered as the next one.
+
+4. Bring communities together around similar music and enabling them to govern the archives themselves. 
+
+
+## Architecture Overview
+
+It is recommended to check the [glossary](https://github.com/oceanprotocol/musicmap/wiki/1.-Quick-Musicmap-Glossary) list for project-specific terms.
+
+More information (ontology, list of functionalities, roadmap, research definitions,...) can be found in the Google Doc [musicmap spreadsheets](https://docs.google.com/spreadsheets/d/1OYCkgvwwHP_sSMbNA7i0XvSVGFVsgFnAwF-XGv0MTuk/edit?usp=sharing). 
+
+<roadmap> here
+
+The architecture can be divided into three large divisions: front end UI/UX (including content) called ., off-chain or hybrid back end data storage and data functions called …, and on-chain governance framework with curation building blocks and native token called ...
+
+
+## Actors
+
+The various actors in the musicmap ecosystem are as follows:
+
+### Consumer / User
+Consumers are users of the platform who want to browse for music (=consuming the data). Anyone who likes music can be a consumer. Consumers do not need authentication or liquidity.
+
+### Contributor
+Contributors add value to the network by proposing Data Entries or Nexi. Contributors must have a wallet and a minimum liquidity as they will have to put up stake in order to propose a Data Entry. Since we are dealing with very small amounts of data with little value, the stake must be extremely minimal. Since musicmap relies on a very large amount of contributors, and particularly outside the blockchain community, authentication and onboarding must show the lowest possible threshold. 
+There are different types of Contributors:
+_Nexus Contributors:_
+They propose new Data Entries within an existing Nexus.
+_Super-Genre Contributors:_
+They propose new Nexi within an existing Super-Genre.
+Protocol to propose and accept new data from super-genre contributors will be much more rigorous and with a substantial higher threshold and different parameters than Nexus contributions.
+
+### Curator
+Curators judiciously maintain the different registries by voting bad entries out and good ones in. Curators also need to have a wallet and liquidity. The rules when an actor can become a curator are not yet clear. Normally, curators are bound either to their Nexus or their super-genre and thus can only curate their respective registries or markets. Being a curator across different markets is possible if the curators are active in those markets.
+There are different types of Curators:
+_Nexus Curators:_
+They curate a TCR, thus are only required for binary voting. They either vote on a new proposal of Data Entry for a certain Nexus, or they challenge an existing registry Data Entry.
+_Super-Genre Curators:_ 
+They curate which Nexi are accepted in the network and which aren’t. This is rather some sort of a Curation Market where the best Nexi will surface and be displayed, according to a certain ranking or reputation. Survival of the fittest will eventually widen the gap between the high quality markets and the low quality ones. Thus introducing an observable threshold under which low-quality super-genres will be excluded from the carta and the high quality ones.
