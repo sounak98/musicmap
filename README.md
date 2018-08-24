@@ -37,13 +37,16 @@ For the bigger story that ties in the original musicmap theory chapters with the
 
 <overview graph> here
 
-The architecture can be divided into three large **divisions**.
+The architecture can be divided into three large project **divisions**.
 * Front end UI/UX (including content), combination of HTML, CSS, 3D.js and Canvas.
 * Off-chain or hybrid back end data storage and data functions.
 * On-chain governance framework with curation building blocks and native token.
 
-The final architecture can also be divided into three **tiers**, which follow the evolution of releases.
-With each release, an additional tier and complexity will be added to the network.
+The final architecture can also be divided into three hierarchial **tiers**, which follow the evolution of releases.
+With each release, an additional tier and complexity will be added to the network. The addition of each tier will have serious consequences on every division. All tiers exist within an overarching one-element forth tier (Tier 0): _the Music Universe_. the tiers are as follows:
+* Tier 1: **Super-Genres**: subcultural groups of genres that belong together (_e.g. Rap, Blues,..._) - estimated ideal amount: 30-50
+* Tier 2: **Nexi** or Core Genres: well-defined genres that form the main level of interactivity with the network (_e.g. Garage Rock, Minimal Techno, Bossa Nova_) - estimated ideal amount: 300-500
+* Tier 3: **Data Entries** or Music Songs: data container of a singular song with URL's to various 3rd party providers and all metadata - estimated ideal amount: 50-150 million
 
 
 ## Actors
