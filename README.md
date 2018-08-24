@@ -23,11 +23,16 @@ The goals and principles of musicmap to which to abide are as follows:
 4. Bring communities together around similar music and enabling them to govern the archives themselves. 
 
 
-## Architecture Overview
+## Papers and Information
 
 It is recommended to check the [glossary](https://github.com/oceanprotocol/musicmap/wiki/1.-Quick-Musicmap-Glossary) list for project-specific terms.
 
 More information (ontology, list of functionalities, roadmap, research definitions,...) can be found in the Google Doc [musicmap spreadsheets](https://docs.google.com/spreadsheets/d/1OYCkgvwwHP_sSMbNA7i0XvSVGFVsgFnAwF-XGv0MTuk/edit?usp=sharing). 
+
+For the bigger story that ties in the original musicmap theory chapters with the new goals and architecture (though slightly outdated and more subject to change), please visit the [Musicmap Enhancement Protocol Paper](https://docs.google.com/document/d/1auYC-DZk3ubqx6F4XqqZi0mJJHT1-oq8v7V2Fqw8-h4/edit?usp=sharing).
+
+
+## Architecture Overview
 
 <roadmap> here
 
