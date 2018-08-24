@@ -32,6 +32,7 @@ More information (_ontology, list of functionalities, roadmap, research definiti
 
 For the bigger story that ties in the original musicmap theory chapters with the new goals and architecture (though slightly outdated and more subject to change), please visit the [Musicmap Enhancement Protocol Paper](https://docs.google.com/document/d/1auYC-DZk3ubqx6F4XqqZi0mJJHT1-oq8v7V2Fqw8-h4/edit?usp=sharing).
 ).
+
 For an overview of all the different capabilities, structured by release, and the various research tasks, see [here](https://docs.google.com/document/d/1dSMROk7OHaiyzNDS1zrs6aONavaGMmR34qcJSKZ0lvk/edit?usp=sharing).
 
 ## Architecture Overview
