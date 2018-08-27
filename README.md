@@ -40,9 +40,9 @@ For an overview of all the different capabilities, structured by release, and th
 <overview graph> here
 
 The architecture can be divided into three large project **divisions**.
-* Front end UI/UX (including content), combination of HTML, CSS, 3D.js and Canvas.
-* Off-chain or hybrid back end data storage and data functions.
-* On-chain governance framework with curation building blocks and native token.
+* **Melody (Treble):** Front end UI/UX (including content), combination of HTML, CSS, 3D.js and Canvas.
+* **Harmony (Mid):** Off-chain or hybrid back end data storage and data functions.
+* **Rhythm (Bass):** On-chain governance framework with curation building blocks and native token.
 
 The final architecture can also be divided into three hierarchial **tiers**, which follow the evolution of releases.
 With each release, an additional tier and complexity will be added to the network. The addition of each tier will have serious consequences on every division. All tiers exist within an overarching one-element forth tier (Tier 0): _the Music Universe_. the tiers are as follows:
