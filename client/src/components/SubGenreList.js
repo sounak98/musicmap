@@ -13,7 +13,8 @@ import {Paper,
         Typography,
         Chip,
         AppBar,
-        Switch} from '@material-ui/core';
+        Switch,
+        Snackbar} from '@material-ui/core';
 import classNames from 'classnames';
 import green from '@material-ui/core/colors/green';
 import FaceIcon from '@material-ui/icons/Face';
@@ -127,6 +128,7 @@ class SubGenreList extends Component {
             genre: 'Rock',
             songs: [],
             totalDuration: '',
+            showNotification: false,
             currentTrack: {
                 src: 'https://p.scdn.co/mp3-preview/3eb16018c2a700240e9dfb8817b6f2d041f15eb1?cid=774b29d4f13844c495f206cafdad9c86',
                 title: 'Cut To The Feeling',
@@ -200,6 +202,19 @@ https://accounts.spotify.coåm/authorize?response_type=token&client_id=f329b5876
         return `${parseInt(totalDuration / 3600) > 0 ? (parseInt(totalDuration / 3600) + 'hours and'): ''} ${parseInt((totalDuration % 3600) / 60)} min`
         
     }
+    handleActionOpen(e){
+        e.preventDefault();
+        this.setState({
+            showNotification: true
+        })
+        console.log(e.target.text);
+    }
+
+    handleActionClose(){
+        this.setState({
+            showNotification: false
+        })
+    }
     componentDidMount(){
         this.setState({
             songs: [...rows],
@@ -228,7 +243,7 @@ https://accounts.spotify.coåm/authorize?response_type=token&client_id=f329b5876
                                 </Typography>
                             </Grid>
                             <Grid item>
-                            <Switch value="checkedC" />
+                            <Switch value="checked" />
                             </Grid>
                             <Grid item className={classes.playGrid}>
                                 <Button variant="contained" color="secondary" className={classes.playButton}>
@@ -270,7 +285,7 @@ https://accounts.spotify.coåm/authorize?response_type=token&client_id=f329b5876
                                     {
                                         row.actions.map(action => {
                                             return (
-                                                <Button key={action} size="small" variant="contained" color="secondary" className={classes.actionButton}>
+                                                <Button key={action} onClick={this.handleActionOpen.bind(this)} size="small" variant="contained" color="secondary" className={classes.actionButton}>
                                                 {action}
                                                 </Button>
                                             );
@@ -283,6 +298,18 @@ https://accounts.spotify.coåm/authorize?response_type=token&client_id=f329b5876
                         })}
                         </TableBody>
                     </Table>
+                    <Snackbar
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
+                        }}
+                        open={this.state.showNotification}
+                        autoHideDuration={6000}
+                        onClose={this.handleActionClose}
+                        ContentProps={{
+                            'aria-describedby': 'message-id',
+                        }}
+                        message={<span id="message-id">Note archived</span>} />
                 </Paper>
             </div>
         </>
