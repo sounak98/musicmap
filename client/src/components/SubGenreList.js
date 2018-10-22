@@ -174,13 +174,16 @@ class SubGenreList extends Component {
    getSpotifyAccessToken(){
     let clientId = 'f329b587614b4f97b8e2aadc26693dbc';
     let scopes = 'user-read-email';
-    let redirect_uri = "https://warm-cove-80703.herokuapp.com/callback/?scope=user-read-email&state=12345";
+    let redirect_uri = "https%3A%2F%2Fwarm-cove-80703.herokuapp.com%2Fcallback&scope%3Duser-read-email&state=12345";
 
+    /*
+https://accounts.spotify.coåm/authorize?response_type=token&client_id=f329b587614b4f97b8e2aadc26693dbc&scope=user-read-email&redirect_uri=https%3A%2F%2Fwarm-cove-80703.herokuapp.com%2Fcallback%2F%3Fscope%3Duser-read-email%26state%3D12345
+    */
     let url = 'https://accounts.spotify.com/authorize' +
     '?response_type=token' +
     '&client_id=' + clientId +
     (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-    '&redirect_uri=' + encodeURIComponent(redirect_uri);
+    '&redirect_uri=' + redirect_uri;
      window.location = url;
   }
 
