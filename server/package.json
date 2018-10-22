@@ -1,0 +1,36 @@
+{
+  "name": "cryptaldash-bigchaindb-rest-api",
+  "version": "1.0.0",
+  "description": "CryptalDash Rest API proof-of-concept to perform operations on bigchaindb network",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "babel ./src -d ./dist -s",
+    "docker": "docker-compose stop && docker-compose rm -f && docker-compose pull && docker-compose up --build -d",
+    "start": "npm run build && node dist/index.js",
+    "test": "npm run build && mocha",
+    "dev": "nodemon src/index.js --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigchaindb/TODO.git"
+  },
+  "author": "BigchainDB",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-dotenv": "^0.1.1",
+    "babel-preset-env": "^1.7.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.2",
+    "supertest": "^3.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bigchaindb-driver": "^4.1.0",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-json-validator-middleware": "^1.2.3",
+    "mongodb": "^3.1.1"
+  }
+}
