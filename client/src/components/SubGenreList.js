@@ -174,7 +174,7 @@ class SubGenreList extends Component {
    getSpotifyAccessToken(){
     let clientId = 'f329b587614b4f97b8e2aadc26693dbc';
     let scopes = 'user-read-email';
-    let redirect_uri = "http://localhost:3000/callback?scope=user-read-email&state=12345";
+    let redirect_uri = "https://warm-cove-80703.herokuapp.com/callback?scope=user-read-email&state=12345";
 
     let url = 'https://accounts.spotify.com/authorize' +
     '?response_type=token' +
