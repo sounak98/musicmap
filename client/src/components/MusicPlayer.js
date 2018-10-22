@@ -86,10 +86,15 @@ class MusicPlayer extends Component {
         albumThumbnail: 'https://i.scdn.co/image/966ade7a8c43b72faa53822b74a899c675aaafee',
         album: 'Cut To The Feeling',
         artist: 'Carly Rae Jepsen',
-        year: '2017'
+        year: '2017',
+        trackId: {
+          spotify: '6EJiVf7U0p1BBfs0qqeb1f'
+        }
       }
     }
   }
+
+  
 
   render() {
     const { classes } = this.props;

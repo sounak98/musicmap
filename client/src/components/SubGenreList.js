@@ -27,7 +27,11 @@ const styles = theme => ({
     overflowX: 'auto'
   },
   headerAppBar: {
-    height: theme.spacing.unit * 15
+    height: theme.spacing.unit * 15,
+    backgroundColor: buttonGradientBackground
+  },
+  genreTitle: {
+    color: buttonGradientBackground
   },
   headerGridContainer: {
     height: '100%' 
@@ -112,7 +116,6 @@ const rows = [
     createData('Rejected', 'The Centurians', 'Bullwinkle pt.II', 'Surf War', '06:10', 2005, 'spotify', ['Reapply']),
     createData('Applied', 'The Ziggens', 'Goin\' Richter', 'Pomona Lisa', '04:53', 1997, 'spotify', ['Challenge']),
     createData('Challenged', 'Slacktone', 'Tidal Wave', 'Another Album', '03:21', 2011, 'spotify', ['Accept', 'Reject']),
-    createData('Accepted', 'The Revels', 'Church Key', 'Intoxical!!', '05:18', 1965, 'spotify', [])
 
 ]
 
@@ -123,10 +126,65 @@ class SubGenreList extends Component {
         this.state = {
             genre: 'Rock',
             songs: [],
-            totalDuration: ''
+            totalDuration: '',
+            currentTrack: {
+                src: 'https://p.scdn.co/mp3-preview/3eb16018c2a700240e9dfb8817b6f2d041f15eb1?cid=774b29d4f13844c495f206cafdad9c86',
+                title: 'Cut To The Feeling',
+                albumThumbnail: 'https://i.scdn.co/image/966ade7a8c43b72faa53822b74a899c675aaafee',
+                album: 'Cut To The Feeling',
+                artist: 'Carly Rae Jepsen',
+                year: '2017',
+                trackId: {
+                  spotify: '6EJiVf7U0p1BBfs0qqeb1f'
+                }
+            }
         }
     }
     
+    /**
+   * stream data from spotify if you have correct access token
+   * @param {string} trackId 
+   */
+  playOnSpotify(trackId){
+    if(localStorage.getItem('musicmap-spotify-user')){
+     fetch(`https://api.spotify.com/v1/tracks/${trackId}`)
+     .then(function(response) {
+       return response.json();
+     })
+     .then(function(trackInfo) {
+       console.log(JSON.stringify(trackInfo));
+       //update current track details in player
+       this.setState({
+         currentTrack: {
+           title: trackInfo.name,
+           src: trackInfo.href,
+           album: trackInfo.album.name,
+           artist: trackInfo.artists.name,
+           year: trackInfo.album['release_date'].split('-')[0],
+           albumThumbnail: trackInfo.album.images[0]
+         }
+       })
+     });
+    }
+    else {
+      this.getSpotifyAccessToken();
+    }
+   }
+
+   getSpotifyAccessToken(){
+    let clientId = 'f329b587614b4f97b8e2aadc26693dbc';
+    let scopes = 'user-read-email';
+    let redirect_uri = "http://localhost:3000/callback?scope=user-read-email&state=12345";
+
+    let url = 'https://accounts.spotify.com/authorize' +
+    '?response_type=token' +
+    '&client_id=' + clientId +
+    (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+    '&redirect_uri=' + encodeURIComponent(redirect_uri);
+     window.location = url;
+  }
+
+  
     calculateTotalDuration(songs){
         let durations = songs.map(song => song.duration);
         let totalDuration = 0;
@@ -159,7 +217,7 @@ class SubGenreList extends Component {
                             justify='space-evenly'
                             className={classes.headerGridContainer}>
                             <Grid item className={classes.titleGrid}>
-                                <Typography variant="h4" component="h2" gutterBottom>
+                                <Typography className={classes.genreTitle} variant="h4" component="h2" gutterBottom>
                                 Rock
                                 </Typography>
                                 <Typography variant="body2" component="p" classNames={classes.genreMetadata}>
@@ -194,7 +252,7 @@ class SubGenreList extends Component {
                         {rows.map(row => {
                             return (
                             <TableRow className={classes.itemRow} key={row.id}>
-                                <TableCell> <Icon className={classNames(classes.icon, 'fab fa-spotify fa-2x')} color="secondary" /></TableCell>
+                                <TableCell> <Icon onClick={this.getSpotifyAccessToken} className={classNames(classes.icon, 'fab fa-spotify fa-2x')} color="secondary" /></TableCell>
                                
                                 <TableCell>{row.artist}</TableCell>
                                 <TableCell>{row.title}</TableCell>
