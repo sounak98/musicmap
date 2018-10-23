@@ -81,14 +81,14 @@ class MusicPlayer extends Component {
     super(props);
     this.state = {
       currentTrack: {
-        src: 'https://p.scdn.co/mp3-preview/3eb16018c2a700240e9dfb8817b6f2d041f15eb1?cid=774b29d4f13844c495f206cafdad9c86',
-        title: 'Cut To The Feeling',
-        albumThumbnail: 'https://i.scdn.co/image/966ade7a8c43b72faa53822b74a899c675aaafee',
-        album: 'Cut To The Feeling',
-        artist: 'Carly Rae Jepsen',
-        year: '2017',
+        src: 'https://p.scdn.co/mp3-preview/b071542836bc1fe6774de39770cb5ad1f8615cde?cid=774b29d4f13844c495f206cafdad9c86',
+        title: 'Bella Ciao',
+        albumThumbnail: 'https://i.scdn.co/image/ad0938a0e2198ba39b0ce05361a0f65644ed33f3',
+        album: 'Bella Ciao',
+        artist: 'Hardwell & Maddix',
+        year: '2018',
         trackId: {
-          spotify: '6EJiVf7U0p1BBfs0qqeb1f'
+          spotify: '1geovaCdfs5fSa4NNgFPVe'
         }
       }
     }
