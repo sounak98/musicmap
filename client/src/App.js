@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import SubGenreList from './components/SubGenreList';
+import CoreGenre from './components/CoreGenre';
 import MusicPlayer from './components/MusicPlayer';
 import { loadCSS } from 'fg-loadcss/src/loadCSS';
 
@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <SubGenreList />
+       <CoreGenre />
        <MusicPlayer />
       </div>
     );
