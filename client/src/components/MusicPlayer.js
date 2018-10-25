@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import {Paper, Grid, IconButton, SvgIcon, Avatar, Typography} from '@material-ui/core';
 import { Media, Player, controls } from './player';
 import { rotatein } from 'react-animations';
 import classNames from 'classnames';
+import { updateCurrentTrack } from '../actions/playerAction';
 
 const { PlayPause, CurrentTime, MuteUnmute, SeekBar, Progress, Volume, Duration} = controls
 
@@ -75,26 +77,7 @@ const styles = theme => ({
   }
 });
 
-class MusicPlayer extends Component {
-
-  constructor(props){
-    super(props);
-    this.state = {
-      currentTrack: {
-        src: 'https://p.scdn.co/mp3-preview/b071542836bc1fe6774de39770cb5ad1f8615cde?cid=774b29d4f13844c495f206cafdad9c86',
-        title: 'Bella Ciao',
-        albumThumbnail: 'https://i.scdn.co/image/ad0938a0e2198ba39b0ce05361a0f65644ed33f3',
-        album: 'Bella Ciao',
-        artist: 'Hardwell & Maddix',
-        year: '2018',
-        trackId: {
-          spotify: '1geovaCdfs5fSa4NNgFPVe'
-        }
-      }
-    }
-  }
-
-  
+class MusicPlayer extends Component {  
 
   render() {
     const { classes } = this.props;
@@ -104,7 +87,7 @@ class MusicPlayer extends Component {
          <Media>
            <div>
           <div>
-            <Player useAudioObject={true} vendor='audio' src={this.state.currentTrack.src} />
+            <Player useAudioObject={true} vendor='audio' src={this.props.currentTrack.src} />
           </div>
          {/****** main player container *******/}
          <Grid container
@@ -117,8 +100,8 @@ class MusicPlayer extends Component {
            justify='center'
            alignItems='center'>
             <Grid item className={classes.albumThumbnailContainer} >
-              <Avatar alt={this.state.currentTrack.album} 
-              src={this.state.currentTrack.albumThumbnail} 
+              <Avatar alt={this.props.currentTrack.album} 
+              src={this.props.currentTrack.albumThumbnail} 
               className={classNames(classes.albumThumbnail, classes.albumAnimation)} />
             </Grid>
             <Grid container
@@ -128,17 +111,17 @@ class MusicPlayer extends Component {
             alignItems='flex-start'>
               <Grid item>
                 <Typography variant="title">
-                  {this.state.currentTrack.title}
+                  {this.props.currentTrack.title}
                 </Typography>
               </Grid>
               <Grid item>
                 <Typography variant="subheading">
-                  {this.state.currentTrack.artist}
+                  {this.props.currentTrack.artist}
                 </Typography>
               </Grid>
               <Grid item>
                 <Typography variant="subheading">
-                  {this.state.currentTrack.year}
+                  {this.props.currentTrack.year}
                 </Typography>
               </Grid>
             </Grid>
@@ -177,7 +160,7 @@ class MusicPlayer extends Component {
               </Grid>
               <Grid item>
                 <IconButton aria-label="Next" >
-                  <SvgIcon className={classes.icon} color='secondary'>
+                  <SvgIcon onClick={this.props.updateCurrentTrack} className={classes.icon} color='secondary'>
                     <path d="M16,18H18V6H16M6,18L14.5,12L6,6V18Z"/>
                   </SvgIcon>
                 </IconButton>
@@ -230,8 +213,14 @@ class MusicPlayer extends Component {
   
 }
 
+const mapStateToProps = state => ({
+    currentTrack: state.player.currentTrack
+})
+
 MusicPlayer.propTypes = {
   classes: PropTypes.object.isRequired,
+  currentTrack: PropTypes.object.isRequired,
+  updateCurrentTrack:  PropTypes.func
 };
 
-export default withStyles(styles)(MusicPlayer);
+export default connect(mapStateToProps, { updateCurrentTrack })(withStyles(styles)(MusicPlayer));

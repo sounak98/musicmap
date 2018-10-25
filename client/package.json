@@ -5,11 +5,15 @@
   "dependencies": {
     "@material-ui/core": "^3.2.1",
     "@material-ui/icons": "^3.0.1",
+    "deepmerge": "^2.2.1",
     "fg-loadcss": "^2.0.1",
     "react": "^16.5.2",
     "react-animations": "^1.0.0",
     "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
     "react-scripts": "2.0.5",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {

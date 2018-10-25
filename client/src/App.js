@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 import './App.css';
 import CoreGenre from './components/CoreGenre';
 import MusicPlayer from './components/MusicPlayer';
@@ -22,10 +24,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-       <CoreGenre />
-       <MusicPlayer />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <CoreGenre />
+          <MusicPlayer />
+        </div>
+      </Provider>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import {Paper, 
         Table, 
@@ -17,7 +18,6 @@ import {Paper,
         Snackbar} from '@material-ui/core';
 import classNames from 'classnames';
 import green from '@material-ui/core/colors/green';
-import FaceIcon from '@material-ui/icons/Face';
 
 const buttonGradientBackground = 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)';
 
@@ -146,8 +146,16 @@ class CoreGenre extends Component {
    * @param {string} trackId 
    */
   playOnSpotify(trackId){
-    if(localStorage.getItem('mm_spotify_access_token')){
-     fetch(`https://api.spotify.com/v1/tracks/${trackId}`)
+    let accessToken = localStorage.getItem('mm_spotify_access_token');
+    if(accessToken){
+     console.log('got access token - ' + accessToken);
+     fetch({
+         url: `https://api.spotify.com/v1/tracks/${trackId}`,
+         method: 'GET',
+         headers: {
+            'Authorization': 'Bearer ' + accessToken
+        }
+     })
      .then(function(response) {
        return response.json();
      })
@@ -167,6 +175,7 @@ class CoreGenre extends Component {
      });
     }
     else {
+        console.log("going to get new token from spotify")
       this.getSpotifyAccessToken();
     }
    }
@@ -180,6 +189,7 @@ class CoreGenre extends Component {
         let e, r = /([^&;=]+)=?([^&;]*)/g,
             q = window.location.hash.substring(1);
         while ( e = r.exec(q)) {
+            console.log(e);
             hashParams[e[1]] = decodeURIComponent(e[2]);
         }
     return hashParams;
@@ -188,7 +198,7 @@ class CoreGenre extends Component {
    getSpotifyAccessToken(){
     let clientId = 'f329b587614b4f97b8e2aadc26693dbc';
     let scopes = 'user-read-email';
-    let redirect_uri = window.location.href + "callback/";
+    let redirect_uri = "http://localhost:3000/callback/";
     let url = 'https://accounts.spotify.com/authorize' +
     '?response_type=token' +
     '&client_id=' + clientId +
@@ -196,14 +206,10 @@ class CoreGenre extends Component {
     '&redirect_uri=' + encodeURIComponent(redirect_uri);
     window.location = url;
 
-    //store access token in localStorage
-    let params = this.getHashParams();
-    localStorage.setItem('mm_spotify_access_token', params.access_token);
-    this.playOnSpotify(this.state.spotify.trackId)
+    
     
   }
 
-  
     calculateTotalDuration(songs){
         let durations = songs.map(song => song.duration);
         let totalDuration = 0;
@@ -230,6 +236,17 @@ class CoreGenre extends Component {
         })
     }
     componentDidMount(){
+        if(!localStorage.getItem('mm_spotify_access_token')
+        && window.location.href.includes('#access_token')) {
+            //store access token in localStorage
+            let params = this.getHashParams();
+            localStorage.setItem('mm_spotify_access_token', params.access_token);
+            console.log(" access token : " + localStorage.getItem('mm_spotify_access_token'));
+        
+        }
+        else {
+            console.log("stored access token : " + localStorage.getItem('mm_spotify_access_token'));
+        }
         this.setState({
             songs: [...rows],
             totalDuration : this.calculateTotalDuration(rows)
@@ -284,7 +301,7 @@ class CoreGenre extends Component {
                         {rows.map(row => {
                             return (
                             <TableRow className={classes.itemRow} key={row.id}>
-                                <TableCell> <Icon onClick={this.getSpotifyAccessToken} className={classNames(classes.icon, 'fab fa-spotify fa-2x')} color="secondary" /></TableCell>
+                                <TableCell> <Icon onClick={()=> {this.playOnSpotify(this.state.currentTrack.trackId.spotify)}} className={classNames(classes.icon, 'fab fa-spotify fa-2x')} color="secondary" /></TableCell>
                                
                                 <TableCell>{row.artist}</TableCell>
                                 <TableCell>{row.title}</TableCell>
@@ -332,6 +349,8 @@ class CoreGenre extends Component {
   
 }
 
+
+const mapStateToProps = state => {}
 CoreGenre.propTypes = {
   classes: PropTypes.object.isRequired,
 };
