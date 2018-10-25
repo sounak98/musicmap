@@ -340,7 +340,7 @@ class CoreGenre extends Component {
                         ContentProps={{
                             'aria-describedby': 'message-id',
                         }}
-                        message={<span id="message-id">Note archived</span>} />
+                        message={<span id="message-id">Action registered successfully</span>} />
                 </Paper>
             </div>
         </>
