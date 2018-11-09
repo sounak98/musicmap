@@ -11,7 +11,7 @@ import {
         SERVER_KEY_PATH,
         SERVER_CRT_PATH,
         CA_CRT_PATH } from 'babel-dotenv';
-import { spotifyRouter, unknownRouter } from './routes';
+import { spotifyRouter, unknownRouter, trackRouter } from './routes';
 import { handleErrors } from './middlewares/errorHandler';
 
 export const app = express();
@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(cors());
 
 //handle known routes
+app.use('/', trackRouter);
 app.use('/', spotifyRouter);
 
 //handle unknown routes
