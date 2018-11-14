@@ -13,12 +13,12 @@ const styles = theme => ({
       height: theme.spacing.unit * 10
     },
   slider: {
-    width: theme.spacing.unit * 100,
+    width: theme.spacing.unit * 50,
     '&::-webkit-slider-thumb' : {
     '-webkit-appearance': 'none',
     appearance: 'none',
     width: theme.spacing.unit * 20,
-    height: theme.spacing.unit * 20,
+    height: theme.spacing.unit * 10,
     backgroundColor: 'secondary',
     cursor: 'pointer'
     }

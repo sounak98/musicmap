@@ -15,7 +15,6 @@ const customTheme = createMuiTheme({
     }
 })
 
-console.log(customTheme);
 
 const MusicMapApp = () => (
     <MuiThemeProvider theme={customTheme}>

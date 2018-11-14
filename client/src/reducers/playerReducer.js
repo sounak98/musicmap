@@ -16,8 +16,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-    console.log(state)
-
+    
     let updatedCurrentTrack = {
         currentTrack: {
             year: action.payload

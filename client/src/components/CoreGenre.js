@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Spotify from '../containers/Spotify';
+import AddNewTrack from './AddNewTrack';
 import { withStyles } from '@material-ui/core/styles';
 import {Paper, 
         Table, 
@@ -18,7 +20,8 @@ import {Paper,
         Snackbar} from '@material-ui/core';
 import classNames from 'classnames';
 import green from '@material-ui/core/colors/green';
-
+const token = 'BQCEgGDO5KKUuD6BvfR1vQdASUPFHOx0AIFHjrra0Jr5PnY1mZ2gBsdWFPFi49iXsgYcPxQSeUODTyMTEQhDmHa9-xKl5sneO2thYO-Ich0RWWucIboeE8Jp2e-2pFpFT9MQPKZmKjKdzpiCNnkWWbUG3P5w43-6LKZVf6pqvyT3qB2k1TUtfeEX';
+  
 const buttonGradientBackground = 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)';
 
 const styles = theme => ({
@@ -34,7 +37,7 @@ const styles = theme => ({
   genreTitle: {
   },
   headerGridContainer: {
-    height: '100%' 
+    height: '100%',
   },  
   headerContainer: {
     ...theme.mixins.gutters(),
@@ -84,7 +87,7 @@ const styles = theme => ({
       textAlign: 'center'
   },
   genreMetadata : {
-      marginTop: theme.spacing.unit * 10
+      marginTop: theme.spacing.unit
   }
   
 });
@@ -127,6 +130,8 @@ class CoreGenre extends Component {
             songs: [],
             totalDuration: '',
             showNotification: false,
+            showPlayer: false,
+            showNewTrackForm: false,
             currentTrack: {
                 src: 'https://p.scdn.co/mp3-preview/3eb16018c2a700240e9dfb8817b6f2d041f15eb1?cid=774b29d4f13844c495f206cafdad9c86',
                 title: 'Cut To The Feeling',
@@ -145,7 +150,7 @@ class CoreGenre extends Component {
    * stream data from spotify if you have correct access token
    * @param {string} trackId 
    */
-  playOnSpotify(trackId){
+  playItOnSpotify(trackId){
     let accessToken = localStorage.getItem('mm_spotify_access_token');
     if(accessToken){
      console.log('got access token - ' + accessToken);
@@ -153,10 +158,12 @@ class CoreGenre extends Component {
          url: `https://api.spotify.com/v1/tracks/${trackId}`,
          method: 'GET',
          headers: {
-            'Authorization': 'Bearer ' + accessToken
+            'Authorization': 'Bearer ' + accessToken,
+            'Accept' : 'application/json'
         }
      })
      .then(function(response) {
+        console.log(response);
        return response.json();
      })
      .then(function(trackInfo) {
@@ -210,6 +217,15 @@ class CoreGenre extends Component {
     
   }
 
+  playOnSpotify(){
+      this.setState({
+          showPlayer: true
+      })
+  }
+
+  storeTokenAndExpiry(){
+
+  }
     calculateTotalDuration(songs){
         let durations = songs.map(song => song.duration);
         let totalDuration = 0;
@@ -235,7 +251,14 @@ class CoreGenre extends Component {
             showNotification: false
         })
     }
+
+    addNewTrack(){
+        this.setState({
+            showNewTrackForm: true
+        })
+    }
     componentDidMount(){
+        /*
         if(!localStorage.getItem('mm_spotify_access_token')
         && window.location.href.includes('#access_token')) {
             //store access token in localStorage
@@ -246,11 +269,13 @@ class CoreGenre extends Component {
         }
         else {
             console.log("stored access token : " + localStorage.getItem('mm_spotify_access_token'));
-        }
+            //this.playOnSpotify(this.state.currentTrack.trackId.spotify);
+        } */
         this.setState({
             songs: [...rows],
             totalDuration : this.calculateTotalDuration(rows)
         })
+       
     }
     render(){
         const { classes } = this.props;
@@ -266,10 +291,10 @@ class CoreGenre extends Component {
                             justify='space-evenly'
                             className={classes.headerGridContainer}>
                             <Grid item className={classes.titleGrid}>
-                                <Typography className={classes.genreTitle} variant="h4" component="h2" gutterBottom>
+                                <Typography className={classes.genreTitle} variant="h4" component="h2">
                                 {this.state.genre}
                                 </Typography>
-                                <Typography variant="body2" component="p" classNames={classes.genreMetadata}>
+                                <Typography variant="body2" component="p" className={classes.genreMetadata}>
                                 {this.state.songs.length} songs &#8226; {this.state.totalDuration}
                                 </Typography>
                             </Grid>
@@ -277,8 +302,8 @@ class CoreGenre extends Component {
                             <Switch value="checked" />
                             </Grid>
                             <Grid item className={classes.playGrid}>
-                                <Button variant="contained" color="secondary" className={classes.playButton}>
-                                    Play All
+                                <Button onClick={this.addNewTrack.bind(this)} variant="contained" color="secondary" className={classes.playButton}>
+                                    Add New Track
                                 </Button>
                             </Grid>
                         </Grid>
@@ -301,7 +326,7 @@ class CoreGenre extends Component {
                         {rows.map(row => {
                             return (
                             <TableRow className={classes.itemRow} key={row.id}>
-                                <TableCell> <Icon onClick={()=> {this.playOnSpotify(this.state.currentTrack.trackId.spotify)}} className={classNames(classes.icon, 'fab fa-spotify fa-2x')} color="secondary" /></TableCell>
+                                <TableCell> <Icon onClick={()=> this.playOnSpotify()} className={classNames(classes.icon, 'fab fa-spotify fa-2x')} color="secondary" /></TableCell>
                                
                                 <TableCell>{row.artist}</TableCell>
                                 <TableCell>{row.title}</TableCell>
@@ -335,14 +360,16 @@ class CoreGenre extends Component {
                             horizontal: 'center',
                         }}
                         open={this.state.showNotification}
-                        autoHideDuration={6000}
-                        onClose={this.handleActionClose}
+                        autoHideDuration={2000}
+                        onClose={this.handleActionClose.bind(this)}
                         ContentProps={{
                             'aria-describedby': 'message-id',
                         }}
                         message={<span id="message-id">Action registered successfully</span>} />
                 </Paper>
             </div>
+            {(this.state.showPlayer || window.location.href.includes("callback/")) ? <Spotify /> : null}
+            <AddNewTrack show={this.state.showNewTrackForm} />
         </>
         );
     }

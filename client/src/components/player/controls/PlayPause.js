@@ -11,8 +11,8 @@ const styles = theme => ({
         '&:hover': {
           cursor: 'pointer'
         },
-        width: theme.spacing.unit * 8,
-        height: theme.spacing.unit * 8,
+        width: theme.spacing.unit * 4,
+        height: theme.spacing.unit * 4,
         color: buttonGradientBackground
       }
   });

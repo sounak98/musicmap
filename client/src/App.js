@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
-import './App.css';
-import CoreGenre from './components/CoreGenre';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Redirect
+} from 'react-router-dom'
+import Spotify from './containers/Spotify';
 import MusicPlayer from './components/MusicPlayer';
+import CoreGenre from './components/CoreGenre';
 import { loadCSS } from 'fg-loadcss/src/loadCSS';
 
 class App extends Component {
@@ -24,12 +30,20 @@ class App extends Component {
 
   render() {
     return (
+     
       <Provider store={store}>
-        <div className="App">
-          <CoreGenre />
-          <MusicPlayer />
-        </div>
+       <>
+        <Router>
+          <>
+            <Route exact path='/' component={CoreGenre} />
+            <Route path='/callback' component={CoreGenre} />
+            <Route path='/spotify' component={CoreGenre} />
+          </>
+        </Router>  
+        
+      </>
       </Provider>
+      
     );
   }
 }
