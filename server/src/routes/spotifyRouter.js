@@ -14,7 +14,6 @@ const spotify = new SpotifyModel();
 const redirect_uri = "http://localhost:4000/callback?scope=user-read-private%20user-read-email&state=34fFs29kd09";
 
 spotifyRouter.get('/spotify/track/:id', async (req, res, next) => {
-      console.log("inside Spotify GET")
       try{
         let result = await spotify.getTrackMetadata(req.params.id);
         res.status(result.status).json(result.data);

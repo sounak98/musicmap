@@ -16,7 +16,6 @@ export default class SpotifyModel {
     }
    
     async _getToken(){
-        console.log("Going to get token for auth - " + auth);
         let res =null;
         try{
            res = await axios({
@@ -33,7 +32,8 @@ export default class SpotifyModel {
        
         }
         catch(error){
-            console.log(error)
+            console.log(error);
+            throw new Error(error);
         }
 
         return res;
@@ -44,10 +44,9 @@ export default class SpotifyModel {
         if(!this._isTokenValid()){
             let tokenRes = await this._getToken();
             this.token = tokenRes.data['access_token']
-            this.tokenExpiry = Date.now() + parseInt(tokenRes.data['expires_in']);
+            this.tokenExpiry = Date.now() + (parseInt(tokenRes.data['expires_in'] * 1000));
         }
          
-        console.log("Token - ", this.token);
         let res = null;
         try {
             res = await axios({
@@ -60,14 +59,15 @@ export default class SpotifyModel {
         }
         catch(error){
             console.log(error)
+            throw new Error(error);
         }
         
         return res;
     }
 
     _isTokenValid(){
-        let now = Date.now();
-        if(this.tokenExpiry > now){
+        if(this.tokenExpiry > Date.now()){
+            console.log("Token is valid")
             return true;
         }
         return false;
