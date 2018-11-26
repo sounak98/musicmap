@@ -10,6 +10,7 @@ import {
 import Spotify from './containers/Spotify';
 import MusicPlayer from './components/MusicPlayer';
 import CoreGenre from './components/CoreGenre';
+import Login from './components/Login';
 import { loadCSS } from 'fg-loadcss/src/loadCSS';
 
 class App extends Component {
@@ -36,6 +37,7 @@ class App extends Component {
         <Router>
           <>
             <Route exact path='/' component={CoreGenre} />
+            <Route exact path='/login' component={Login} />
             <Route path='/callback' component={CoreGenre} />
             <Route path='/spotify' component={CoreGenre} />
           </>

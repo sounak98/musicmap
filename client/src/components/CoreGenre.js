@@ -32,7 +32,6 @@ const styles = theme => ({
   },
   headerAppBar: {
     height: theme.spacing.unit * 15,
-    backgroundColor: buttonGradientBackground
   },
   genreTitle: {
   },
@@ -52,9 +51,6 @@ const styles = theme => ({
     minWidth: 700,
   },
   playButton: {
-    borderRadius: theme.spacing.unit * 2,
-    background: buttonGradientBackground,
-
   },
   titleGrid: {
     flexGrow: 20
@@ -80,7 +76,6 @@ const styles = theme => ({
     textTransform: 'capitalize',
     borderRadius: theme.spacing.unit,
     minWidth: theme.spacing.unit * 10,
-    background: buttonGradientBackground
   },
   playlistHeader: {
       margin: '0 auto',
@@ -297,9 +292,6 @@ class CoreGenre extends Component {
                                 <Typography variant="body2" component="p" className={classes.genreMetadata}>
                                 {this.state.songs.length} songs &#8226; {this.state.totalDuration}
                                 </Typography>
-                            </Grid>
-                            <Grid item>
-                            <Switch value="checked" />
                             </Grid>
                             <Grid item className={classes.playGrid}>
                                 <Button onClick={this.addNewTrack.bind(this)} variant="contained" color="secondary" className={classes.playButton}>
