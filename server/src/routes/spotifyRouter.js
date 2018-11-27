@@ -24,4 +24,14 @@ spotifyRouter.get('/spotify/track/:id', async (req, res, next) => {
  
   });
   
+spotifyRouter.get('/spotify/search', async (req, res, next) => {
+    try{
+      let result = await spotify.searchTracks(req.query['q'], 15, 0);
+      res.status(result.status).json(result.data);
+    }
+    catch(error){
+      next(new Error(error));
+    }  
+
+});
 export default spotifyRouter;

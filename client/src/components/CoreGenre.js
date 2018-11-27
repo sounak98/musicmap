@@ -94,35 +94,13 @@ function createData(status, artist, title, album, duration, year, provider, acti
   return { id, status, artist, title, album, duration, year, provider, actions };
 }
 
-const rows = [
-    createData('Applied', 'The Ziggens', 'Goin\' Richter', 'Pomona Lisa', '05:53', 1997, 'spotify', ['Challenge']),
-    createData('Challenged', 'Slacktone', 'Tidal Wave', 'Another Album', '03:21', 2011, 'spotify', ['Accept', 'Reject']),
-    createData('Accepted', 'The Revels', 'Church Key', 'Intoxical!!', '05:18', 1965, 'spotify', []),
-    createData('Rejected', 'The Centurians', 'Bullwinkle pt.II', 'Surf War', '06:10', 2005, 'spotify', ['Reapply']),
-    createData('Applied', 'The Ziggens', 'Goin\' Richter', 'Pomona Lisa', '04:53', 1997, 'spotify', ['Challenge']),
-    createData('Challenged', 'Slacktone', 'Tidal Wave', 'Another Album', '03:21', 2011, 'spotify', ['Accept', 'Reject']),
-    createData('Accepted', 'The Revels', 'Church Key', 'Intoxical!!', '05:18', 1965, 'spotify', []),
-    createData('Rejected', 'The Centurians', 'Bullwinkle pt.II', 'Surf War', '06:10', 2005, 'spotify', ['Reapply']),
-    createData('Applied', 'The Ziggens', 'Goin\' Richter', 'Pomona Lisa', '04:53', 1997, 'spotify', ['Challenge']),
-    createData('Challenged', 'Slacktone', 'Tidal Wave', 'Another Album', '03:21', 2011, 'spotify', ['Accept', 'Reject']),
-    createData('Accepted', 'The Revels', 'Church Key', 'Intoxical!!', '05:18', 1965, 'spotify', []),
-    createData('Rejected', 'The Centurians', 'Bullwinkle pt.II', 'Surf War', '06:10', 2005, 'spotify', ['Reapply']),
-    createData('Applied', 'The Ziggens', 'Goin\' Richter', 'Pomona Lisa', '04:53', 1997, 'spotify', ['Challenge']),
-    createData('Challenged', 'Slacktone', 'Tidal Wave', 'Another Album', '03:21', 2011, 'spotify', ['Accept', 'Reject']),
-    createData('Accepted', 'The Revels', 'Church Key', 'Intoxical!!', '05:18', 1965, 'spotify', []),
-    createData('Rejected', 'The Centurians', 'Bullwinkle pt.II', 'Surf War', '06:10', 2005, 'spotify', ['Reapply']),
-    createData('Applied', 'The Ziggens', 'Goin\' Richter', 'Pomona Lisa', '04:53', 1997, 'spotify', ['Challenge']),
-    createData('Challenged', 'Slacktone', 'Tidal Wave', 'Another Album', '03:21', 2011, 'spotify', ['Accept', 'Reject']),
-
-]
-
 class CoreGenre extends Component {
 
     constructor(props){
         super(props);
         this.state = {
             genre: 'Surf Rock',
-            songs: [],
+            tracks: [],
             totalDuration: '',
             showNotification: false,
             showPlayer: false,
@@ -141,6 +119,27 @@ class CoreGenre extends Component {
         }
     }
     
+    async fetchAllTracks(){   
+        fetch(`http://localhost:4000/tracks`)
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+            this.setState({
+                tracks: data.tracks.map(item => {
+                    return {
+                        trackId: item.trackId,
+                        album: item.album,
+                        title: item.title,
+                        year: item.year,
+                        artists: item.artists,
+                        duration: item.duration
+                    }
+                }),
+                totalDuration : this.calculateTotalDuration(data.tracks)
+            })
+        });
+    }
+
     /**
    * stream data from spotify if you have correct access token
    * @param {string} trackId 
@@ -252,7 +251,7 @@ class CoreGenre extends Component {
             showNewTrackForm: true
         })
     }
-    componentDidMount(){
+    async componentDidMount(){
         /*
         if(!localStorage.getItem('mm_spotify_access_token')
         && window.location.href.includes('#access_token')) {
@@ -266,11 +265,65 @@ class CoreGenre extends Component {
             console.log("stored access token : " + localStorage.getItem('mm_spotify_access_token'));
             //this.playOnSpotify(this.state.currentTrack.trackId.spotify);
         } */
-        this.setState({
-            songs: [...rows],
-            totalDuration : this.calculateTotalDuration(rows)
-        })
-       
+
+        await this.fetchAllTracks();       
+    }
+    renderTracks(classes){
+        if(this.state.tracks.length > 0){
+            return (
+                    <Table className={classes.playlistTable}>
+                        <TableHead>
+                        <TableRow className={classes.playlistHeader}>
+                            <TableCell>Play On</TableCell>
+                            <TableCell>Title</TableCell>
+                            <TableCell>Album</TableCell>
+                            <TableCell>Artist</TableCell>
+                            <TableCell>Duration</TableCell>
+                            <TableCell>Year</TableCell>
+                           {/* <TableCell>Status</TableCell>
+                            <TableCell>Actions</TableCell> */}
+                        </TableRow>
+                        </TableHead>
+                        <TableBody>
+                        {this.state.tracks.map(track => {
+                            return (
+                            <TableRow className={classes.itemRow} key={track.trackId}>
+                                <TableCell> <Icon onClick={()=> this.playOnSpotify()} className={classNames(classes.icon, 'fab fa-spotify fa-2x')} color="secondary" /></TableCell>
+                                <TableCell>{track.title}</TableCell>
+                                <TableCell>{track.album}</TableCell>
+                                <TableCell>{track.artists}</TableCell>
+                                <TableCell>{track.duration}</TableCell>
+                                <TableCell>{track.year}</TableCell>
+                               {/*
+                                <TableCell>
+                                    <Chip label={track.status} className={classes.statusChip} variant="outlined" />
+                                </TableCell>
+                               
+                                <TableCell>
+                                    {
+                                        row.actions.map(action => {
+                                            return (
+                                                <Button key={action} onClick={this.handleActionOpen.bind(this)} size="small" variant="contained" color="secondary" className={classes.actionButton}>
+                                                {action}
+                                                </Button>
+                                            );
+                                        })
+                                    }
+                                
+                                </TableCell>
+                                */}
+                            </TableRow>
+                            );
+                        })}
+                        </TableBody>
+                    </Table>    
+            )
+        }
+        else {
+            return (
+                <h5>No Tracks in this Genre. Why don't you add some!</h5>
+            )
+        }
     }
     render(){
         const { classes } = this.props;
@@ -290,7 +343,7 @@ class CoreGenre extends Component {
                                 {this.state.genre}
                                 </Typography>
                                 <Typography variant="body2" component="p" className={classes.genreMetadata}>
-                                {this.state.songs.length} songs &#8226; {this.state.totalDuration}
+                                {this.state.tracks.length} songs &#8226; {this.state.totalDuration}
                                 </Typography>
                             </Grid>
                             <Grid item className={classes.playGrid}>
@@ -300,52 +353,7 @@ class CoreGenre extends Component {
                             </Grid>
                         </Grid>
                     </AppBar> 
-                    
-                    <Table className={classes.playlistTable}>
-                        <TableHead>
-                        <TableRow className={classes.playlistHeader}>
-                            <TableCell>Play On</TableCell>
-                            <TableCell>Artist</TableCell>
-                            <TableCell>Title</TableCell>
-                            <TableCell>Album</TableCell>
-                            <TableCell>Duration</TableCell>
-                            <TableCell>Year</TableCell>
-                            <TableCell>Status</TableCell>
-                            <TableCell>Actions</TableCell>
-                        </TableRow>
-                        </TableHead>
-                        <TableBody>
-                        {rows.map(row => {
-                            return (
-                            <TableRow className={classes.itemRow} key={row.id}>
-                                <TableCell> <Icon onClick={()=> this.playOnSpotify()} className={classNames(classes.icon, 'fab fa-spotify fa-2x')} color="secondary" /></TableCell>
-                               
-                                <TableCell>{row.artist}</TableCell>
-                                <TableCell>{row.title}</TableCell>
-                                <TableCell>{row.album}</TableCell>
-                                <TableCell>{row.duration}</TableCell>
-                                <TableCell>{row.year}</TableCell>
-                                <TableCell>
-                                    <Chip label={row.status} className={classes.statusChip} variant="outlined" />
-                                </TableCell>
-                               
-                                <TableCell>
-                                    {
-                                        row.actions.map(action => {
-                                            return (
-                                                <Button key={action} onClick={this.handleActionOpen.bind(this)} size="small" variant="contained" color="secondary" className={classes.actionButton}>
-                                                {action}
-                                                </Button>
-                                            );
-                                        })
-                                    }
-                                
-                                </TableCell>
-                            </TableRow>
-                            );
-                        })}
-                        </TableBody>
-                    </Table>
+                    {this.renderTracks(classes)}
                     <Snackbar
                         anchorOrigin={{
                             vertical: 'top',

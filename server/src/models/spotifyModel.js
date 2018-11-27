@@ -46,14 +46,43 @@ export default class SpotifyModel {
             this.token = tokenRes.data['access_token']
             this.tokenExpiry = Date.now() + (parseInt(tokenRes.data['expires_in'] * 1000));
         }
-         
         let res = null;
         try {
             res = await axios({
                 method:'get',
                 url:SPOTIFY_WEB_API_BASE_URL + `/tracks/${trackId}`,
                 headers: {
-                    'Authorization': 'Bearer ' + this.token
+                    'Authorization': 'Bearer ' + this.token,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            });
+        }
+        catch(error){
+            console.log(error)
+            throw new Error(error);
+        }
+        
+        return res;
+    }
+
+    async searchTracks(searchQuery, limit, offset){
+        
+        if(!this._isTokenValid()){
+            let tokenRes = await this._getToken();
+            this.token = tokenRes.data['access_token']
+            this.tokenExpiry = Date.now() + (parseInt(tokenRes.data['expires_in'] * 1000));
+        }
+         
+        let res = null;
+        try {
+            res = await axios({
+                method:'get',
+                url: `${SPOTIFY_WEB_API_BASE_URL}/search/?q=${encodeURI(searchQuery)}&type=track&limit=${limit}&offset=${offset}`,
+                headers: {
+                    'Authorization': 'Bearer ' + this.token,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 }
             });
         }
@@ -67,7 +96,6 @@ export default class SpotifyModel {
 
     _isTokenValid(){
         if(this.tokenExpiry > Date.now()){
-            console.log("Token is valid")
             return true;
         }
         return false;
