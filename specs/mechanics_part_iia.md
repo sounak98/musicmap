@@ -115,4 +115,6 @@ Overloading of songs in one genre?
 
 ## Genre Portal UI mock-up
 
+The following sketch shows the main genre UI, with playlist, WIKI section and genre metadata. For each song, the curation status is displayed, allowing the user to see whether a song is being challenged or pending and so forth.
+
 ![genre-portal](./UI%20sketch%20-%20genre%20portal%20IIa.png)
