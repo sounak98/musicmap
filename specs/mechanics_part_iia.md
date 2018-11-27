@@ -111,3 +111,8 @@ Needs to be further addressed.
 Adding and withdrawing songs immediately?
 How is the voting obscured?
 Overloading of songs in one genre?
+
+
+## Genre Portal UI mock-up
+
+![genre-portal](./UI%20sketch%20-%20genre%20portal%20IIa.png)
