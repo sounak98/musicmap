@@ -2,9 +2,9 @@
 
 ## Vouch or Reject 
 
-Instead of working with stage-oriented and politics-inspired challenging and voting mechanisms, we can also take a looser and more reputation-based approach, aligning more with a rather dynamic audience with limited attention span for which the challenging and voting mechanics might also be confusing. In this approach, we propose a system of upvoting and downvoting, but where the registry tracks the entire history of votes (thus preferably on-chain, albeit with a compiled bulk of transactions). 
+Instead of working with stage-oriented and politics-inspired challenging and voting mechanisms, we can also take a looser and more reputation-based approach, aligning better with a dynamic audience for which the challenging and voting mechanics might feel slow and cumbersome. In this approach, we propose a system of upvoting and downvoting, but where the registry tracks the entire history of votes (thus preferably on-chain, albeit with a compiled bulk of transactions). 
 
-For each song, a user can vote (but only once) whether or not that song certainly belongs to the genre (vouch, check) or needs to be rejected (reject, cross). Of course, a user can also take no action. When a user chooses either to vouch or reject, he or she will receive all the subsequent respective votes from the same direction as credit points. So if Alice chooses to reject, all the rejection votes from other users after hers will count towards her score. But also vice versa: if Bob chooses to vouch, he will receive all subsequent vouch votes. Each user will have a personal score (per genre), determined by:
+For each song, a user can vote (but only once) whether or not that song indeed belongs to the genre (vouch, check) or needs to be rejected (reject, cross). Therefore, voting reject equals challenging that song. Of course, a user can also take no action. When a user chooses either to vouch or reject, he or she will receive all the subsequent respective votes from the same direction as credit points. So if Alice chooses to reject, all the rejection votes from other users after hers will count towards her score. But also vice versa: if Bob chooses to vouch, he will receive all subsequent vouch votes. Each user will have a personal score (per genre), determined by:
 
 User score = ⅀n(vouch) + ⅀n(reject)
 
@@ -23,31 +23,31 @@ Proposing a song will automatically add the song to the registry (there is no ap
 
 ## Benefits & Drawbacks 
 
-**Benefits**
+**Benefits ++++**
 
-* The community has the ability to signal the most important, exemplary songs for that genre, making the playlist more interesting from an educational PoV (like original musicmap)
-* There are less complex mechanics involved
-* No more duration of voting and applying: faster filling of list
-* Workload (attention) is equally divided between all songs, users are more incentivized to cast votes for all songs instead of arbitrary ones
-* Your score can go up by doing nothing
-* No problem of lack of curators for early application
-* Once a song is high in the list (lots of votes) it’s almost impossible to vote it out (whereas in the other approach songs might accidently get rejected)
+* The community has the ability to signal the most important, exemplary songs for that genre, making the playlist more interesting from an educational PoV (like original musicmap). The highest ranking songs should be the one most exemplary to that genre, i.e. the quintessential shortlist.
+* There are less complex mechanics involved. There are only two actions per song.
+* No more duration of voting and applying: faster filling of list.
+* Workload (attention) is equally divided between all songs, users are more incentivized to cast votes for all songs instead of arbitrary ones.
+* Your score can go up by doing nothing.
+* The system does not rely on a minimum amount of curators for bootstrapping initial challenges and applications. Lists get filled and can be curated at any time without required response.
+* Once a song is high in the list (lots of votes) it’s almost impossible to vote it out. This is a good thing, because it locks community-approved entries in place and prevents accidents of removing high-quality songs by glitches or unattendance of curators.
 
 
-**Drawbacks**
+**Drawbacks ----**
 
-* Less control over which songs are being accepted into registry
-> Add two registries: a good one (song rating of at least +3) and a bad one (newly proposed songs (rating = 0) or rejected ones (negative score). Users will go hunt in the bad registry for good songs cause that can give them a high score.
-* No possibility of special action achievements (no challenging, voting,...)
+* Due to the removal of an application stage, there is less control over which songs initially enter the registry.
+> Add two registries: a good one (song rating of at least +3) and a bad or initial one (newly proposed songs (rating = 0) or rejected ones (negative score). Users will go hunt in the initial registry for good songs cause that can give them a high score.
+* Less gamification (read: addiction) due to no possibility of special action achievements (no challenging, voting,...).
 > Yes, but because these mechanics are gone, they also dont need to be incentivized
-* The lists can contain songs that are very different from the schelling point (genre)
-> Go to bad registry
-* The risk vs reward function is weaker for signaling bad entries
+* The lists can contain songs that are very different from the Schelling point (genre)
+> Solved with two registries.
+* The risk vs reward function is weaker for signaling bad entries, i.e. applicants do not get slashed for proposing bad entries.
 > When a song enters a damned state (rating -5 or less), the proposer gets punished by a score equal to the rating of the song (thus e.g. -5 to his user score) which will go on indefinitely (other way around?)
 * More transactions to be stored?
 * You cannot change your initial choice, which has eternal consequences
 > Ability to withdraw your vote, but you lose all associated points and have to start from scratch again. 
-Malevolent actors can be not so easily punished
+* Malevolent actors can be not so easily punished: challenging (=rejecting) has no risk of losing stake.
 
 
 ## Attack Vectors & Problems
@@ -112,13 +112,13 @@ Users will see the top first (with most positive votes) and therefore are more l
 >    → Add a multiplier reward for voting reject below 0.
 
 **Plus versus Minus**  
-It is also not rewarding to vote reject for a song with lots of positive votes ((or vice versa)), unless it will tip over to the other side of the scale, which is unlikely to happen. How to incentivize users to vote, even when it’s a high positive value?
+It is not rewarding to vote reject for a song that has lots of positive votes ((or vice versa)), unless it will tip over to the other side of the scale, which is unlikely to happen. How to incentivize users to vote, even when it’s a high positive value?
 >    → Rejection counter starts working immediately, not after it’s negative
     All the reject votes that come after your reject vote will count towards your score
     Therefore the higher the positive score, the more potential gain when rejecting
 
 **King of Nothing**  
-With a credit system per genre and perm···issions only granted for the top within a genre, it incentivizes the community to make lots of genres, keep genre community small, and thus to increase their chances to unlock achievements. Making very small niche genres with a small community, quickly enables to be at the top, flooding the ecosystem with useless registries instead of establishing the perfect genre equilibrium.
+With a credit system per genre and permissions only granted for the top users within a genre, the community is being incentivized to make lots of genres and keep genre community small. Thus increasing their individual chances to unlock achievements. Making very small niche genres with a small community, quickly enables to be at the top, flooding the ecosystem with useless registries instead of establishing the perfect genre equilibrium.
 >    → Set a minimum threshold in credit points before achievements get unlocked (e.g. 1000 points). This will make it almost impossible with niche lists to reap the rewards. Users are incentivized to make sure the registries will hold plenty of songs to gain lots of points but also with a good schelling point if they want to take full advantage of early mover advantage.
     Also registries that don’t have a total score of at least X, will not be pushed to the map.
 
@@ -126,7 +126,7 @@ With a credit system per genre and perm···issions only granted for the top wi
 ## Governance Parameters
 
 
-These are very tricky and critical parameters that ought to be able to be changed by the top leaderboard or other curators. The finetuning of these parameters is essential to the survival of the ecosystem, but only known after many iterations.
+These are critical parameters that ought to be able to be changed by the top leaderboard or other curators. The finetuning of these parameters is essential to the survival of the ecosystem, but only known after many realtime simulations.
 
 **PunishmentRejection**  
 The punishment in negative credit points for the proposer when his proposal becomes removed from the registry  
