@@ -18,7 +18,7 @@ When a song has more reject votes than vouches, this will result in a negative s
 
 Genre score = ⅀(song ratings)
 
-Proposing a song will automatically give you a vouch vote for that song, and will also give you a score of +1 when accepted into registry.
+Proposing a song will automatically add the song to the registry (there is no application stage) with a score of 0, and will also give you a user score of +1.
 
 
 ## Benefits & Drawbacks 
