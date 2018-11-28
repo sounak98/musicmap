@@ -4,13 +4,13 @@
 
 Instead of working with stage-oriented and politics-inspired challenging and voting mechanisms, we can also take a looser and more reputation-based approach, aligning more with a rather dynamic audience with limited attention span for which the challenging and voting mechanics might also be confusing. In this approach, we propose a system of upvoting and downvoting, but where the registry tracks the entire history of votes (thus preferably on-chain, albeit with a compiled bulk of transactions). 
 
-For each song, a user can vote (but only once) whether or not that song certainly belongs to the genre (vouch, check) or needs to be rejected (reject, cross). Of course, a user can also take no action. When a user chooses either to vouch or reject, he or she will receive all the subsequent respective votes from the same direction as credit points. So if Alice chooses to reject, all the rejection votes from other users after hers will count towards her score. But also vice versa: if Bob chooses to vouch, he will receive all subsequent vouch votes. A person’s user score will then be determined by:
+For each song, a user can vote (but only once) whether or not that song certainly belongs to the genre (vouch, check) or needs to be rejected (reject, cross). Of course, a user can also take no action. When a user chooses either to vouch or reject, he or she will receive all the subsequent respective votes from the same direction as credit points. So if Alice chooses to reject, all the rejection votes from other users after hers will count towards her score. But also vice versa: if Bob chooses to vouch, he will receive all subsequent vouch votes. Each user will have a personal score (per genre), determined by:
 
 User score = ⅀n(vouch) + ⅀n(reject)
 
 There will therefore be three leaderboards or score rankings: the user with the highest vouch points or defender score, the user with the highest reject points or challenger score, and the user with the highest combination of both or arbiter score. These three leaderboard unlock different permissions.
 
-The songs of a certain genre will be ranked according to the number of positive (vouch) votes by the simple formula:  
+The songs of a certain genre will be ranked according to the overall sum of votes by the simple formula:  
 
 Song rating = ⅀(vouch) - ⅀(reject)
 
