@@ -1,6 +1,6 @@
 # Musicmap Roadmap / Releases Overview
 
-
+The following chapters explain briefly the different capabilities featuring in each release, starting from the most basic end-to-end environment to a fully fledged ecosystem.
 
 ## Alpha Release
 
