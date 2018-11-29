@@ -21,6 +21,9 @@ Genre score = ⅀(song ratings)
 Proposing a song will automatically add the song to the registry (there is no application stage) with a score of 0, and will also give you a user score of +1.
 
 
+![curation process](./images/mm-sketch_curationprocess.png)
+
+
 ## Benefits & Drawbacks 
 
 **Benefits ++++**
@@ -138,6 +141,9 @@ The positive value of votes from which a song becomes displayed in the main regi
 The minimum credit score a user must have before being eligible to obtain achievements.  
 **CartaThreshold**  
 The minimum genre score a genre must have before it is displayed on the carta.
+
+
+![ranking scale](./images/mm-sketch_rankingscale.png)
 
 Eventually we want to have an ecosystem in place where the initial, immature registries (i.e. the first 50 or 100 entries) are more strictly curated for aforementioned reasons.
 This can be done by implementing different parameters for this phase:
