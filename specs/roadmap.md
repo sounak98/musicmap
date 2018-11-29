@@ -22,7 +22,7 @@ Capabilities:
 
 
 ![alpha release](./images/sketch-alpharelease.png)
-
+  
 
 ## Beta Release
 
@@ -42,7 +42,7 @@ Capabilities:
 
 
 ![beta release](./images/sketch-betarelease.png)
-
+  
 
 ## Intermediary 
 
@@ -70,3 +70,4 @@ Capabilities:
 
 
 ![gamma release](./images/sketch-gammarelease.png)
+  
