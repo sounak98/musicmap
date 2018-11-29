@@ -34,7 +34,7 @@ Capabilities:
 * Portal Interface that holds links to all Nexi
 * Genre Contributor UI with Description or Wiki requirement
 * Wiki/Description segment for Nexus Interface
-* * Advanced Business Logic: CRUD operations on Nexi, framework incentives
+* Advanced Business Logic: CRUD operations on Nexi, framework incentives
 * Integration with second (third) provider (YouTube Music / SoundCloud)
 * Simple Graph DB with nodes for Nexi holding all songs (no edges)
 * Connecting Graph DB as a DID to the Ocean Network
