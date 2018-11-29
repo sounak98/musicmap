@@ -44,6 +44,8 @@ Possible achievements can be:
 * Hierophant           Propose minimum 1/5/10 songs in all different genres
 
 
+![achievements tree](./images/sketch-achievements.png)
+
 These achievements can potentially be stored in a transparent and immutable way as a NFT (optional, probably not recommended). Gaining an actual, more physical (though still digital) token tied to your achievement, further boosts the incentive game. It also creates the possibility to experiment with expiry dates. This means that certain (achievement) tokens might decay over time, to incentivize people to use them if deemed useful. NFT’s can also be traded although that might defeat their purpose.
 
 
@@ -68,6 +70,8 @@ These actions can be decoupled if a difference between during and after applicat
 When a challenge is issued, a voting process starts. The mechanics must incentivize as many users as possible to participate to the voting, therefore effort must be minimum (not like the partial-lock-commit-reveal-JSON-submit process on AdChain) and voter rewards must not be dependant on number of voters. There must be a minimum amount of voters (e.g. 5) or the challenge will not stop. Once either the timeout has ended or 5 voters have been reached, the challenge will come to an end.
 
 With credits that can cost-free be minted, we can simply reward each voter of the majority bloc the same amount and allow voting simply by clicking a button in the front end. Users who have earned most credits within a genre will have bigger weight than other users. For example: Alice has 28 credits, Bob 1540 credits and Cecilia 12300 credits, all within Reggae. Bob vote may count double whereas Cecilia’s vote may count triple when voting on a Reggae challenge.
+
+![voting power](./images/sketch-votingpower.png)
 
 If the total amount of credits for a certain genre g equals Cg and the voting weight is a natural number v = 0,1,2,3… then:
 
