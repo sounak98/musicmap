@@ -2,7 +2,7 @@
 
 The following chapters explain briefly the different capabilities featuring in each release, starting from the most basic end-to-end environment to a fully fledged ecosystem.
 
-## Alpha Release  ///  0.1  ///  Biscroma
+## Alpha Release  :::  0.1  :::  Biscroma
 
 <b>End to End scenario for one genre (Nexus) to test basic functionality and incentive game.</b>
 
@@ -25,7 +25,7 @@ Capabilities:
   
  Potential capabilities added between Biscroma and Croma are part of the so called "Semicroma" update.  
 
-## Beta Release  ///  0.2  ///  Croma
+## Beta Release  :::  0.2  :::  Croma
 
 <b>End to End scenario for combination of genres to build the whole framework.</b>
 
@@ -56,7 +56,7 @@ Capabilities:
 * Personal User Actions (Saving, Sharing, Playlist Queuing)
 
 
-## Gamma Release  ///  0.3  ///  Minima
+## Gamma Release  :::  0.3  :::  Minima
 
 <b>Implementing dynamic front end (Carta) for the framework and super-genres.</b>
 
