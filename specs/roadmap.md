@@ -7,7 +7,7 @@
 End to End scenario for one genre (Nexus)
 Simple Business logic
 
-![alpha release](./specs/images/sketch-alpharelease.png)
+![alpha release](./images/sketch-alpharelease.png)
 
 
 ## Beta Release
@@ -19,11 +19,11 @@ Enable Ingestion phase with bots to interact with API
 Basic Graph DB that holds relationships
 
 
-![beta release](./specs/images/sketch-betarelease.png)
+![beta release](./images/sketch-betarelease.png)
 
 ## Gamma Release
 
 End to End scenario for framework of genres with visual map (Carta).
 
 
-![gamma release](./specs/images/sketch-gammarelease.png)
+![gamma release](./images/sketch-gammarelease.png)
