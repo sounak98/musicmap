@@ -4,6 +4,7 @@
 
 Every type of data needs to go through a multi-phase process before the data or service is able to be discovered or consumed. Such phases are ingestion, normalizing, storing, curating and so on. This is referred to as a data pipeline. Instead of watching the entire pipeline as an end-to-end process for each data entry, we suggest to split the pipeline for musicmap into two big phases: an ingestion phase and a curation phase. This has several benefits: the monotonous and non-scientific work becomes separated from the more difficult work that requires a greater deal of intelligence. This will allow both pipelines to operate at different speeds, without the curation phase becoming a bottleneck for the ingestion phase. The ingestion phase can be automated by bots and programs, allowing for even faster ingestion. With all the data and its corresponding metadata already in place, the workload and initial barrier for the human curators to start curating becomes much smaller.
 
+![data pipeline](./images/sketch-datapipeline.png)
 
 
 ## Ingestion Phase
