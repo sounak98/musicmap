@@ -35,6 +35,8 @@ Enable Community Tribes around a certain genre to come together and get organise
 
 ## Roadmap - Release Overview
 
+See [Roadmap & Capabilities](./specs/roadmap.md) for full description with capabilities.
+
 Because musicmap is a complex and big project, where finetuning of the ecosystem is a critical component, it has to be maintained into several releases to test the end-to-end environment before moving on to the next step.
 The most likely and logical roadmap for this are three releases with potentially one extra intermediary step (3.5 steps). The releases are named after the names of music notes, from small to large.
 
@@ -89,7 +91,7 @@ Curators judiciously maintain the different registries by voting bad entries out
 
 * It is recommended to check the [glossary](https://github.com/oceanprotocol/MusicMap/wiki/1.-Quick-MusicMap-Glossary) list for project-specific terms.
 * Read up about musicmap in the introduction, astract and methodology pages on musicmap.info
-* Be sure to check out the specs folder, with the following documents:
-[Game Mechanics & Incentives](./specs/mechanics_part_i.md)
+* Be sure to check out the specs folder, with the following documents:  
+[Game Mechanics & Incentives](./specs/mechanics_part_i.md)  
 [Roadmap & Capabilities](./specs/roadmap.md)
 
