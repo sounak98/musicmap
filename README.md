@@ -1,37 +1,54 @@
-# MusicMap
+# Musicmap
 
-:musical_score: Visit MusicMap at [www.MusicMap.info](https://www.MusicMap.info)
+:musical_score: Visit Musicmap at [www.musicmap.info](https://www.musicmap.info)
 
 ## Abstract
 
-MusicMap is a platform that offers free or commons data between providers and consumers, also described as contributors. It can be seen as a fairly simple marketplace that does not hold physical data, does not require proof of consumption, or any type of data protection. On the other hand, it will have complex and experimental curation building blocks (TCR variants) and a very challenging dynamic UI linked to the registry framework.
+Musicmap is an open platform that wants to form a navigator hub for all music lovers to connect to any online music service in an easy, attractive and organised way by using music genres. Because music genres are tricky, non-mathematically-defined subjects, musicmap relies on an active community curating the ecosystem. The aim is to become a decentralized, transparent, open ecosystem where long-tail artists can be discovered, music knowledge is preserved, and music archives are organised without any central authority.
 
-MusicMap will share non-physical data (URL, links) primarily between the common (i.e. non-business) public (C2C). Providers (aka Contributors in this case) are anyone who is motivated to bring structure in a chaotic mass of digital music archives, and who wants to contribute to MusicMap’s goals as described in the original purpose paragraph and outlined below. Consumers in this case (aka Users) are basically anyone who likes music.
+From a business perspective, it is a platform that offers free or commons data between providers and consumers, also described as contributors. It can be seen as a fairly simple marketplace that does not hold physical data, does not require proof of consumption, or any type of data protection. On the other hand, it will have complex and experimental curation building blocks (TCR variants) and a very challenging dynamic UI linked to the registry framework.
 
-All this data will be organized by genre. Genres will form the main building blocks to structure this archive and the capability of MusicMap to achieve this in a more or less succesful manner, is what makes it unique. Contributors can create their own lists based on genre, which will automatically deploy the right smart contracts and - if needed - a new token. Contributors can eventually also build communities around these genre lists and organize or govern towards certain goal (like tribes), e.g. making an agenda for concerts and parties, making a list of new and unknown artists, rallying community meetups, etc.
+Musicmap will share non-physical data (URL, links) primarily between the common (i.e. non-business) public (C2C). Providers (aka Contributors in this case) are anyone who is motivated to bring structure in a chaotic mass of digital music archives, and who wants to contribute to MusicMap’s goals as described in the original purpose paragraph and outlined below. Consumers in this case (aka Users) are basically anyone who likes music.
 
-## Motivation & Mission
+All this data will be organized by genre. Genres will form the main building blocks to structure this archive and the capability of musicmap to achieve this in a more or less succesful manner, is what makes it unique. Contributors can create their own lists based on genre, which will automatically deploy the right smart contracts and - if needed - a new token. Contributors can eventually also build communities around these genre lists and organize or govern towards certain goal (like tribes), e.g. making an agenda for concerts and parties, making a list of new and unknown artists, rallying community meetups, etc.
+  
 
-There are 4 main goals and principles of MusicMap, which all have both an active and passive component because it is a network by the people for the people:
+## Principles & Mission
 
-1. **Explore <> Plot**: To provide a music explorer service that has two unique benefits. First combining different 3rd party providers into one, thus opening a massive library of music from within the same platform while also maintaining all these entries in a clean and structured manner. Second and even more important: allowing people to discover music in an active way and therefore regaining the satisfaction of finding music themselves instead of through recommendations and this in a highly attractive visual interface based around genres; the digital equivalent of the record store.
+Being an open-source project, it is important to define which standards and principles to uphold. Any implementation should always keep these principles in mind and facilitate them.  
+Further building on the initial _Purpose_ paragraph in the _Introduction_ chapter of musicmap released in 2016, we can now define four main goals and principles of Musicmap.
+All of these have both an active and passive component because it is a network by the people for the people:
 
-2. **Learn <> Inform**: Concentrate information about music history and sociology in one place, where it can be curated and evaluated and freely made available to the public, in order to educate about music genres without bias or censorship.
+1. **Explore <> Plot**: We want to create a massive music explorer platform that has two unique benefits. First combining different 3rd party providers into one, thus opening a massive library of music from within the same platform while also maintaining all these entries in a clean and structured manner.
+* Second and even more important: allowing people to discover music in an active way and therefore regaining the satisfaction of finding music themselves instead of relying solely recommendations/A.I. This in a highly attractive visual interface based around genres; the digital equivalent of the record store.
+The "Plot" part indicates that the community themselves will actually build and maintain this map. Therefore the exploration experience becomes passive and active at the same time, creating a feedback loop.
 
-3. **Grow <> Nurture**: Give benefits to the long tail artists by working in a completely transparent white box ecosystem that does not use black box algorithms and does not promote the most popular artists. Each artist has the same chance of being discovered as the next one.
+2. **Learn <> Inform**: Concentrate information about music history and music sociology in one place, where it can be curated and evaluated and freely made available to the public, in order to educate about music genres without bias or censorship.
+An enhanced wiki that only deals about music genres, for which information is scarce and hard to find.
 
-4. **Unite <> Build**: Bring communities together around similar music and enabling them to govern the archives themselves.
+3. **Grow <> Nurture**: Give benefits to the long tail artists by working in a completely transparent white box ecosystem that does not use black box algorithms and does not promote the most popular artists. Each artist should have the same chance of being discovered as the next one.
+Ranking of artists or pushing artists to visible front end places should be done in 100% transparant mechanics that are controlled by the community.
 
-## Papers and Information
+4. **Unite <> Build**: Bring communities together around similar music and enabling them to govern the archives themselves. Reward the most contributing users, steer away from financial speculation, and allow governance parameters to be changed by the community. 
+Enable Community Tribes around a certain genre to come together and get organised (events, parties, concerts, sales, promotion, artist networking,...).
+  
 
-It is recommended to check the [glossary](https://github.com/oceanprotocol/MusicMap/wiki/1.-Quick-MusicMap-Glossary) list for project-specific terms.
+## Roadmap - Release Overview
 
-More information (_ontology, list of functionalities, roadmap, research definitions,..._) can be found in the Google Doc [MusicMap spreadsheets](https://docs.google.com/spreadsheets/d/1OYCkgvwwHP_sSMbNA7i0XvSVGFVsgFnAwF-XGv0MTuk/edit?usp=sharing).
+Because musicmap is a complex and big project, where finetuning of the ecosystem is a critical component, it has to be maintained into several releases to test the end-to-end environment before moving on to the next step.
+The most likely and logical roadmap for this are three releases with potentially one extra intermediary step (3.5 steps). The releases are named after the names of music notes, from small to large.
 
-For the bigger story that ties in the original MusicMap theory chapters with the new goals and architecture (though slightly outdated and more subject to change), please visit the [MusicMap Enhancement Protocol Paper](https://docs.google.com/document/d/1auYC-DZk3ubqx6F4XqqZi0mJJHT1-oq8v7V2Fqw8-h4/edit?usp=sharing).
-).
+1. **Biscroma Release (alpha)**
+The absolute minimal E2E environment using only one genre with one playlist that plugs into one provider (we will start with Spotify). A complete ecosystem within one genre.
+The complete code for this release can be duplicated and alterered to test out either different interfaces, different music players, a different provider and/or different curation mechanics.
 
-For an overview of all the different capabilities, structured by release, and the various research tasks, see [here](https://docs.google.com/document/d/1dSMROk7OHaiyzNDS1zrs6aONavaGMmR34qcJSKZ0lvk/edit?usp=sharing).
+2. **Croma Release (beta)**
+A combination of many genres into a framework. Genres can be created, edited, deleted,... A complete ecosystem of all genres.
+Integration of a WIKI component.
+
+3. **Minima Release (RC)**
+Implementation of super-genres as higher level labels, structuring the chaos of many genres. Creation of a dynamic map based on a Graph DB in the back end.
+  
 
 ## Architecture Overview
 
@@ -49,6 +66,7 @@ With each release, an additional tier and complexity will be added to the networ
 * Tier 1: **Super-Genres**: subcultural groups of genres that belong together (_e.g. Rap, Blues,..._) - estimated ideal amount: 30-50
 * Tier 2: **Nexi** or Core Genres: well-defined genres that form the main level of interactivity with the network (_e.g. Garage Rock, Minimal Techno, Bossa Nova_) - estimated ideal amount: 300-500
 * Tier 3: **Data Entries** or Music Songs: data container of a singular song with URL's to various 3rd party providers and all metadata - estimated ideal amount: 50-150 million
+  
 
 ## Actors
 
@@ -56,7 +74,7 @@ The various actors in the MusicMap ecosystem are as follows:
 
 ### Consumer / User
 
-Consumers are users of the platform who want to browse for music (=consuming the data). Anyone who likes music can be a consumer. Consumers do not need authentication or liquidity.
+Consumers are users of the platform who want to discover new music (=consuming the data). Anyone who likes music can be a consumer. Consumers do not need authentication or liquidity.
 
 ### Contributor
 
@@ -65,3 +83,13 @@ Contributors add value to the network by proposing Data Entries or Nexi. Contrib
 ### Curator
 
 Curators judiciously maintain the different registries by voting bad entries out and good ones in. Curators also need to have a wallet and liquidity. The rules when an actor can become a curator are not yet clear. Normally, curators are bound either to their Nexus or their super-genre and thus can only curate their respective registries or markets. Being a curator across different markets is possible if the curators are active in those markets. Users can curate either within a Nexus (deciding what songs should be in there and cleaning the metadata) or within a Super-Genre (deciding what Nexi should be in there).
+  
+
+## Further Information
+
+* It is recommended to check the [glossary](https://github.com/oceanprotocol/MusicMap/wiki/1.-Quick-MusicMap-Glossary) list for project-specific terms.
+* Read up about musicmap in the introduction, astract and methodology pages on musicmap.info
+* Be sure to check out the specs folder, with the following documents:
+[Game Mechanics & Incentives](./specs/mechanics_part_i.md)
+[Roadmap & Capabilities](./specs/roadmap.md)
+

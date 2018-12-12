@@ -1,10 +1,10 @@
 # Musicmap Roadmap / Releases Overview
 
-The following chapters explain briefly the different capabilities featuring in each release, starting from the most basic end-to-end environment to a fully fledged ecosystem.
+The following chapters explain briefly the different capabilities that should be featured in each release, starting from the most basic end-to-end environment to a fully fledged ecosystem.
 
 ## Alpha Release -- 0.1 -- Biscroma
 
-<b>End to End scenario for one genre (Nexus) to test basic functionality and incentive game.</b>
+<b>End to End scenario for one core genre (Nexus) to test basic functionality and incentive game.</b>
 
 Capabilities:
 
@@ -23,14 +23,14 @@ Capabilities:
 ![alpha release](./images/sketch-alpharelease.png)
   
   
-Potential capabilities added between Biscroma and Croma are part of the so called "Semicroma" update.  
+Potential capabilities added between Biscroma and Croma (like search) are part of the so called "Semicroma" update.  
   
   
 ## Beta Release -- 0.2 -- Croma
 
 <b>End to End scenario for combination of genres to build the whole framework.</b>
 
-* Simple Search function (open form) per genre and for all
+* Simple Search function (open form) per genre and for all genres
 * Enable Ingestion phase with bots to interact with API
 * Basic Graph DB that holds relationships (for multiple genres)
 * Portal Interface that holds links to all Nexi
