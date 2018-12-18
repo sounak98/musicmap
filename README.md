@@ -1,6 +1,11 @@
+[![bannerocn](./specs/images/repo-banner@2x.png)](https://oceanprotocol.com)
+[![bannermm](./specs/images/banner-mm-github.png)](https://musicmap.info)
+
 <h1 align="center">Musicmap</h1>
 
 > :musical_score: A Commons Marketplace for Music Curation sailing on the Ocean
+
+---
 
 Table of Contents
 ==================
@@ -8,11 +13,11 @@ Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Musicmap](#musicmap)
   * [Abstract](#abstract)
-  * [Principles & Mission](#principles---mission)
+  * [Principles and Mission](#principles-and-mission)
   * [Roadmap - Release Overview](#roadmap---release-overview)
   * [Architecture Overview](#architecture-overview)
   * [Actors](#actors)
-    + [Consumer / User](#consumer---user)
+    + [Consumer](#consumer)
     + [Contributor](#contributor)
     + [Curator](#curator)
   * [Further Information](#further-information)
@@ -20,9 +25,6 @@ Table of Contents
 
 
 ---
-
-
-
 
 **This is an early alpha state and you can expect running into problems. If you encounter one, please open a new issue.**
 
@@ -41,7 +43,7 @@ Musicmap will share non-physical data (URL, links) primarily between the common 
 All this data will be organized by genre. Genres will form the main building blocks to structure this archive and the capability of musicmap to achieve this in a more or less succesful manner, is what makes it unique. Contributors can create their own lists based on genre, which will automatically deploy the right smart contracts and - if needed - a new token. Contributors can eventually also build communities around these genre lists and organize or govern towards certain goal (like tribes), e.g. making an agenda for concerts and parties, making a list of new and unknown artists, rallying community meetups, etc.
   
 
-## Principles & Mission
+## Principles and Mission
 
 Being an open-source project, it is important to define which standards and principles to uphold. Any implementation should always keep these principles in mind and facilitate them.  
 Further building on the initial _Purpose_ paragraph in the _Introduction_ chapter of musicmap released in 2016, we can now define four main goals and principles of Musicmap.
@@ -100,7 +102,7 @@ With each release, an additional tier and complexity will be added to the networ
 
 The various actors in the MusicMap ecosystem are as follows:
 
-### Consumer / User
+### Consumer
 
 Consumers are users of the platform who want to discover new music (=consuming the data). Anyone who likes music can be a consumer. Consumers do not need authentication or liquidity.
 
