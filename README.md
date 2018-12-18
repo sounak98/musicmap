@@ -2,11 +2,30 @@
 
 > :musical_score: A Commons Marketplace for Music Curation sailing on the Ocean
 
+Table of Contents
+==================
+
+- [Musicmap](#musicmap)
+  * [Abstract](#abstract)
+  * [Principles & Mission](#principles---mission)
+  * [Roadmap - Release Overview](#roadmap---release-overview)
+  * [Architecture Overview](#architecture-overview)
+  * [Actors](#actors)
+    + [Consumer / User](#consumer---user)
+    + [Contributor](#contributor)
+    + [Curator](#curator)
+  * [Further Information](#further-information)
+
 ---
+
+
+
 
 **This is an early alpha state and you can expect running into problems. If you encounter one, please open a new issue.**
 
 ---
+
+# Musicmap
 
 ## Abstract
 
