@@ -1,6 +1,12 @@
-# Musicmap
+<h1 align="center">Musicmap</h1>
 
-:musical_score: Visit Musicmap at [www.musicmap.info](https://www.musicmap.info)
+> :musical_score: A Commons Marketplace for Music Curation sailing on the Ocean
+
+---
+
+**This is an early alpha state and you can expect running into problems. If you encounter one, please open a new issue.**
+
+---
 
 ## Abstract
 
@@ -89,6 +95,7 @@ Curators judiciously maintain the different registries by voting bad entries out
 
 ## Further Information
 
+* Visit Musicmap at [www.musicmap.info](https://www.musicmap.info)
 * It is recommended to check the [glossary](https://github.com/oceanprotocol/MusicMap/wiki/1.-Quick-MusicMap-Glossary) list for project-specific terms.
 * Read up about musicmap in the introduction, astract and methodology pages on musicmap.info
 * Be sure to check out the specs folder, with the following documents:  
