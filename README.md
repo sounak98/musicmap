@@ -82,8 +82,6 @@ Implementation of super-genres as higher level labels, structuring the chaos of 
 
 ## Architecture Overview
 
-![architecture diagram](./specs/mm_components_fullpath.png)
-
 The architecture can be divided into three large project **divisions**.
 
 * **Melody (Treble):** Front end UI/UX (including content), combination of HTML, CSS, 3D.js and Canvas.
@@ -119,7 +117,7 @@ Curators judiciously maintain the different registries by voting bad entries out
 
 * Visit Musicmap at [www.musicmap.info](https://www.musicmap.info)
 * It is recommended to check the [glossary](https://github.com/oceanprotocol/MusicMap/wiki/1.-Quick-MusicMap-Glossary) list for project-specific terms.
-* Read up about musicmap in the introduction, astract and methodology pages on musicmap.info
+* Read up about musicmap in the introduction, astract and methodology pages on www.musicmap.info
 * Be sure to check out the specs folder, with the following documents:  
 [Game Mechanics & Incentives](./specs/mechanics_part_i.md)  
 [Roadmap & Capabilities](./specs/roadmap.md)
