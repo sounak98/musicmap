@@ -53,7 +53,38 @@ Proposing a song will automatically add the song to the registry (there is no ap
 * Malevolent actors can be not so easily punished: challenging (=rejecting) has no risk of losing stake.
 
 
+## Governance Parameters
+
+
+These are critical parameters that ought to be able to be changed by the top leaderboard or other curators. The finetuning of these parameters is essential to the survival of the ecosystem, but only known after many realtime simulations.
+
+**PunishmentMultiplier**  
+The multiply factor that is used on the average song score, which then serves as a punishment for the user. 
+**BlacklistThreshold**  
+The negative value of total votes from which a song permanently becomes removed from the registry (e.g. -100)  
+**WhitelistThreshold**  
+The positive value of total votes from which a song becomes displayed in the main registry (.e.g. 10)  
+**AchievementThreshold**  
+The minimum credit score a user must have before being eligible to obtain achievements. _(not for first release)_  
+**CartaThreshold**  
+The minimum genre score a genre must have before it is displayed on the carta. _(not for first release)_  
+
+
+![ranking scale](./images/mm-sketch_rankingscale.png)
+
+Eventually we want to have an ecosystem in place where the initial, immature registries (i.e. the first 50 or 100 entries) are more strictly curated for aforementioned reasons.
+This can be done by implementing different parameters for this phase:
+* Have at least 40% different artists (thus 20 or 40).
+* WhitelistThreshold increased to +20
+* PunishmentMultiplier increased
+* RemovalThreshold decreased to -50
+* Max proposals per user?
+
+
+
 ## Attack Vectors & Problems
+
+The following chapter tries to find possible means of cheating or attacking the system and how to prevent this.
 
 
 **Spam everything accept**  
@@ -126,29 +157,4 @@ With a credit system per genre and permissions only granted for the top users wi
     Also registries that don’t have a total score of at least X, will not be pushed to the map.
 
 
-## Governance Parameters
 
-
-These are critical parameters that ought to be able to be changed by the top leaderboard or other curators. The finetuning of these parameters is essential to the survival of the ecosystem, but only known after many realtime simulations.
-
-**PunishmentRejection**  
-The punishment in negative credit points for the proposer when his proposal becomes removed from the registry  
-**RemovalThreshold**  
-The negative value of total votes from which a song permanently becomes removed from the registry (e.g. -10)  
-**WhitelistThreshold**  
-The positive value of votes from which a song becomes displayed in the main registry (.e.g. 3)  
-**AchievementThreshold**  
-The minimum credit score a user must have before being eligible to obtain achievements.  
-**CartaThreshold**  
-The minimum genre score a genre must have before it is displayed on the carta.
-
-
-![ranking scale](./images/mm-sketch_rankingscale.png)
-
-Eventually we want to have an ecosystem in place where the initial, immature registries (i.e. the first 50 or 100 entries) are more strictly curated for aforementioned reasons.
-This can be done by implementing different parameters for this phase:
-* Have at least 40% different artists (20 or 40).
-* WhitelistThreshold increased to +5
-* PunishmentRejection increased
-* RemovalThreshold decreased to -5
-* Max proposals per user?
