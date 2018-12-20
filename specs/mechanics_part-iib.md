@@ -52,19 +52,16 @@ This also applies to the proposer of a new track (contributor).
 * The system does not rely on a minimum amount of curators for bootstrapping initial challenges and applications. Lists get filled and can be curated at any time without required response.
 * Once a song is high in the list (lots of votes) it’s almost impossible to vote it out. This is a good thing, because it locks community-approved entries in place and prevents accidents of removing high-quality songs by unattendance of curators.
 
-
 **Drawbacks (and solutions) ----**
 
 * Due to the removal of an application stage, there is less control over which songs initially enter the registry (auto acceptance), which might cause visual clutter of bad entries (especially with small lists) and even worse: signal a wrong schelling point.
 > This is why a whitelist with threshold should be implemented. A separate sandbox playlist will also appeal to speculators who will hunt in the initial registry for good songs cause that can give them a high score.
 * Less gamification (read: addiction) due to no possibility of special action achievements (no challenging or voting awards).
 > Yes, but because these mechanics are gone, they also dont need to be incentivized.
-* The risk vs reward function is weaker for signaling bad entries, i.e. applicants do not get slashed for proposing bad entries.
-> When a song enters a blacklisted state, the proposer gets punished by a score equal to the rating of the song (thus e.g. -5 to his user score) which will go on indefinitely (other way around?)
 * More transactions to be stored?
+> Remains to be seen.
 * You cannot change your initial choice, which has eternal consequences
-> Ability to withdraw your vote, but you lose all associated points and have to start from scratch again. 
-* Malevolent actors can be not so easily punished: challenging (=rejecting) has no risk of losing stake.
+> Ability to withdraw your vote could be implemented, but we don't want to overcomplicate the logic. This will also make users vote more carefully.
 
 
 ## Governance Parameters
@@ -73,7 +70,7 @@ This also applies to the proposer of a new track (contributor).
 These are critical parameters that ought to be able to be changed by the top leaderboard or other curators. The finetuning of these parameters is essential to the survival of the ecosystem, but only known after many realtime simulations.
 
 **PunishmentMultiplier**  
-The multiply factor that is used on the average song score, which then serves as a punishment for the user. 
+The multiply factor that is used on the average song score, which then serves as a punishment for the user.  
 **BlacklistThreshold**  
 The negative value of total votes from which a song permanently becomes removed from the registry (e.g. -100)  
 **WhitelistThreshold**  
