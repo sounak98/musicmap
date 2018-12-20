@@ -1,52 +1,66 @@
 # Game Mechanics Part IIb - Continuous Voting Model
 
-## Vouch or Reject 
+## Vouch or Reject Votes
 
-Instead of working with stage-oriented and politics-inspired challenging and voting mechanisms, we can also take a looser and more reputation-based approach, aligning better with a dynamic audience for which the challenging and voting mechanics might feel slow and cumbersome. In this approach, we propose a system of upvoting and downvoting, but where the registry tracks the entire history of votes (thus preferably on-chain, albeit with a compiled bulk of transactions). 
+Instead of working with phase-oriented and politics-inspired challenging and voting mechanisms, we can also take a looser and more reputation-based approach, aligning better with a dynamic audience for which the challenging and voting mechanics might feel slow and cumbersome. In this approach, we propose a system of upvoting and downvoting, but where the registry tracks the entire history of votes (thus preferably on-chain, albeit with a compiled bulk of transactions). 
 
-For each song, a user can vote (but only once) whether or not that song indeed belongs to the genre (vouch, check) or needs to be rejected (reject, cross). Therefore, voting reject equals challenging that song. Of course, a user can also take no action. When a user chooses either to vouch or reject, he or she will receive all the subsequent respective votes from the same direction as credit points. So if Alice chooses to reject, all the rejection votes from other users after hers will count towards her score. But also vice versa: if Bob chooses to vouch, he will receive all subsequent vouch votes. Each user will have a personal score (per genre), determined by:
+For each song, a user can vote (but only once) whether or not that song indeed belongs to the genre (vouch, check) or needs to be rejected (reject, cross). Therefore, voting reject equals challenging that song. Of course, a user can also take no action. 
 
-User score = ⅀n(vouch) + ⅀n(reject)
+The songs (tracks) of a certain genre will be ranked according to the overall sum of votes by the simple formula:  
 
-There will therefore be three leaderboards or score rankings: the user with the highest vouch points or defender score, the user with the highest reject points or challenger score, and the user with the highest combination of both or arbiter score. These three leaderboard unlock different permissions.
+Track rating = TR = ⅀(vouch) - ⅀(reject)
 
-The songs of a certain genre will be ranked according to the overall sum of votes by the simple formula:  
+When a track has more reject votes than vouches, this will result in a negative track rating. A very low negative rating will lead to the track becoming blacklisted and possible removal. When a track has a lot more vouch than reject votes, it will become whitelisted and added to the main registry. In this case, the track has a high rating, which can still be increased by additional vouch votes in that registry to determine which tracks should belong at the top.  
+By removing or quarantaining blacklisted songs, additional votes have become impossible and we have essentially made the track rating scale asymmetrical, i.e. a track can be rated upwards infinitely but not downwards. This will make our business logic more complex and introduce additional rules. However, an asymmetrical rating scale makes more sense as deciding whether or not a track should have a rating of -500 or -5000 is a serious waste of community effort (it is already clear that the track does not belong in the list). Therefore a Blacklist Treshold ensures a focus of curation where it is needed and keep registries tidy.
 
-Song rating = ⅀(vouch) - ⅀(reject)
+![ranking scale](./images/mm-sketch_rankingscale.png)
 
-When a song has more reject votes than vouches, this will result in a negative score and these songs will be hidden from the main playlist (but can be made visible by the user). The total amount of song ratings (including the negative ones) will result in the overall genre score, which is a direct indicator of the genre’s popularity or activity.
+When a user chooses either to vouch or reject, he or she will receive all the subsequent respective votes from the same direction as credit points. So if Alice chooses to reject, all the rejection votes from other users after hers will count towards her score. But also vice versa: if Bob chooses to vouch, he will receive all subsequent vouch votes. Because of the asymmetry of our rating scale, each user will have two different scores (per genre). The top user scores will be displayed in leaderboards: one for the users with the highest vouch points _(defender score)_ and one for the users with the highest reject points _(challenger score which will normally be much lower on average than the defender score)_. These leaderboards might unlock different permissions.
 
-Genre score = ⅀(song ratings)
 
-Proposing a song will automatically add the song to the registry (there is no application stage) with a score of 0, and will also give you a user score of +1.
+The total amount of track ratings (including the negative ones) will result in the overall genre rating, which is a direct indicator of the genre’s popularity or activity. Take note that it is thus possible to have a negative genre rating.
+
+Genre rating = GR = ⅀(TRn)
+
+Proposing a track will automatically add the track to the registry (there is no application stage) with a score of 0, and will also mark your vote for that track as vouch.
 
 
 ![curation process](./images/mm-sketch_curationprocess.png)
+
+
+## Punishment and Control
+
+To prevent users from senseless spamming votes or not curating wisely, the three following balance checks will be implemented:
+
+1. Add a maximum amount of votes per user per time interval (day).
+2. When voting reject to a track that eventually gets whitelisted, your user challenger score will be slashed by (TR - WT) where WT is whitelist threshold. Thus: the more popular a track becomes, the more you will be slashed if you voted against it.
+If you vote reject to a song that is already whitelisted, you will receive no penalty.
+3. When voting vouch to a song that eventually gets blacklisted, your user defender score will be slashed by 5 times the average track rating. This multiplier is derived from the estimation that about 80% of the sandbox registry will be correct.
+This also applies to the proposer of a new track (contributor).
+
 
 
 ## Benefits & Drawbacks 
 
 **Benefits ++++**
 
-* The community has the ability to signal the most important, exemplary songs for that genre, making the playlist more interesting from an educational PoV (like original musicmap). The highest ranking songs should be the one most exemplary to that genre, i.e. the quintessential shortlist.
+* The community has the ability to signal the most important, exemplary songs for that genre, making the playlist more interesting from an educational point of view (like original musicmap). The highest ranking songs should be the one most exemplary to that genre, i.e. the quintessential shortlist.
 * There are less complex mechanics involved. There are only two actions per song.
 * No more duration of voting and applying: faster filling of list.
 * Workload (attention) is equally divided between all songs, users are more incentivized to cast votes for all songs instead of arbitrary ones.
 * Your score can go up by doing nothing.
 * The system does not rely on a minimum amount of curators for bootstrapping initial challenges and applications. Lists get filled and can be curated at any time without required response.
-* Once a song is high in the list (lots of votes) it’s almost impossible to vote it out. This is a good thing, because it locks community-approved entries in place and prevents accidents of removing high-quality songs by glitches or unattendance of curators.
+* Once a song is high in the list (lots of votes) it’s almost impossible to vote it out. This is a good thing, because it locks community-approved entries in place and prevents accidents of removing high-quality songs by unattendance of curators.
 
 
-**Drawbacks ----**
+**Drawbacks (and solutions) ----**
 
-* Due to the removal of an application stage, there is less control over which songs initially enter the registry.
-> Add two registries: a good one (song rating of at least +3) and a bad or initial one (newly proposed songs (rating = 0) or rejected ones (negative score). Users will go hunt in the initial registry for good songs cause that can give them a high score.
-* Less gamification (read: addiction) due to no possibility of special action achievements (no challenging, voting,...).
-> Yes, but because these mechanics are gone, they also dont need to be incentivized
-* The lists can contain songs that are very different from the Schelling point (genre)
-> Solved with two registries.
+* Due to the removal of an application stage, there is less control over which songs initially enter the registry (auto acceptance), which might cause visual clutter of bad entries (especially with small lists) and even worse: signal a wrong schelling point.
+> This is why a whitelist with threshold should be implemented. A separate sandbox playlist will also appeal to speculators who will hunt in the initial registry for good songs cause that can give them a high score.
+* Less gamification (read: addiction) due to no possibility of special action achievements (no challenging or voting awards).
+> Yes, but because these mechanics are gone, they also dont need to be incentivized.
 * The risk vs reward function is weaker for signaling bad entries, i.e. applicants do not get slashed for proposing bad entries.
-> When a song enters a damned state (rating -5 or less), the proposer gets punished by a score equal to the rating of the song (thus e.g. -5 to his user score) which will go on indefinitely (other way around?)
+> When a song enters a blacklisted state, the proposer gets punished by a score equal to the rating of the song (thus e.g. -5 to his user score) which will go on indefinitely (other way around?)
 * More transactions to be stored?
 * You cannot change your initial choice, which has eternal consequences
 > Ability to withdraw your vote, but you lose all associated points and have to start from scratch again. 
@@ -70,7 +84,7 @@ The minimum credit score a user must have before being eligible to obtain achiev
 The minimum genre score a genre must have before it is displayed on the carta. _(not for first release)_  
 
 
-![ranking scale](./images/mm-sketch_rankingscale.png)
+
 
 Eventually we want to have an ecosystem in place where the initial, immature registries (i.e. the first 50 or 100 entries) are more strictly curated for aforementioned reasons.
 This can be done by implementing different parameters for this phase:
