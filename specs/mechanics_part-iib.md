@@ -100,18 +100,11 @@ The following chapter tries to find possible means of cheating or attacking the 
 
 **Spam everything accept**  
 You are more likely to win than to gain as the lists should be already 70-90% correct (estimate). This is also a quick way to bump artificially the overall score of a genre.
->    → Punishment for clicking accept when it gets rejected should be accordingly high.
-    Punishment x 4 x avg user vote (=??)  
-    → Optional: timelock and/or maximum amount of votes per user per day
+>    → Punishment for clicking accept when it gets rejected should be accordingly high. That is why there is a multiplier and average track rating.
 
 **Troll Propose Attack**  
 Spam propose as many songs as possible from a totally different genre.
- >   → Ban user from proposing within a genre after X amounts of damned songs  
-    → Implement punishment for the proposer when a song gets removed.
-
-**Waste by Negative Focus**  
-If all songs are displayed with a score from +∞ until -∞, it is better to let users focus their efforts on positive votes (to have a good ranking). Time and effort placed in additional negative votes will exponentially decrease in value, because these songs do not belong on the list and consumers will also not listen to them. It is important for mass adoption to let the users do the least amount of work possible.
- >   → Implement a threshold in negative score after which a song gets removed from the entry.
+ >   → Implement punishment for the proposer when a song gets removed.
 
 **Diverging from Schelling Point**  
 The initial bootstrapping phase is very important to set the right Schelling Point direction.
@@ -125,15 +118,16 @@ Certain users become targeted to decrease their user points and dethrone them fr
 >    → implement maximum anonimity, only show user names at leaderboard. Make sure user ID cannot be fetched from the back end
 
 **Spam everything reject (with different accounts)**  
-You will not lose any points but you will diminish the overall value of the genre. If you can do that with different accounts, you can hurt scores.
+This attack might be attempted to hurt the overall genre score. When performed on songs that are already whitelisted, there's no risk of punishment.
 >    → make it so that user scores are not affected by the opposite votes (i.e. when i vote accept, the number of reject votes afterwards do not matter)  
     → track user IP? Make ID’s unique? Unique emailadresses?
+    → because there is a limited amount of votes per day and the songs are whitelisted, you will waste your votes without any score increase. 
 
 **Coordinated group attack**  
 Influence a large group of people by all voting in the same direction to win credit points or to bump or attack a specific song.
 >    → Do not implement user fora or links to reddit channels to prevent coordinated attacks  
     → this attack is already mitigated because only the first ones will win a lot. The last in line never has any benefit for voting in the same direction that it was going.  
-    → Implement time lock if a song receives more than X votes in Y time
+    → Implement time lock if a song receives more than X votes in Y time (can be implemented later)
 
 **Skewing of Genres**  
 >    → This is for later, but can be prevented by reward for bottom 20% of genres and penalty for top 20% of genres. This can be a fixed multiplier reward (x2, x1,5,...).
@@ -144,23 +138,13 @@ When the lists remain relatively empty, there will be no incentive to further fi
 
 **Bump to the top**  
 Once a song has established lots of positive votes, it will become almost “untouchable”. Bumping a song fast to high place with different accounts can net the user lots of points and can also put incorrect songs for a long time in the list.
->    → Prevent many bumps within a limited timespan.
+>    → Prevent many bumps within a limited timespan. (can be implemented later)
 
 **Misinterpretation / Absence of Schelling Point**  
 Consumers can assume the reject and vouch buttons are more like “likes” and “dislikes” where they just vote on music they like, and reject whatever they don’t like instead of objectively assessing whether or not it belongs to that genre.
 >    → Make forking of genres easy and almost effortless so that toxic genres can become ignored and new schelling points established  
     → Add warning pop up with explanation before confirming all votes  
     → UI must use clear buttons with red cross for reject and green mark for vouch and certainly not thumbs up or down (like YouTube Music)
-
-**Asymmetry of Voting Scale**  
-Users will see the top first (with most positive votes) and therefore are more likely to already vote there. It would often be more lucrative to vote vouch than reject as this has the potential to earn a lot more votes, and also because the whitelist threshold has introduced an asymmetric voting scale.
->    → Add a multiplier reward for voting reject below 0.
-
-**Plus versus Minus**  
-It is not rewarding to vote reject for a song that has lots of positive votes ((or vice versa)), unless it will tip over to the other side of the scale, which is unlikely to happen. How to incentivize users to vote, even when it’s a high positive value?
->    → Rejection counter starts working immediately, not after it’s negative
-    All the reject votes that come after your reject vote will count towards your score
-    Therefore the higher the positive score, the more potential gain when rejecting
 
 **King of Nothing**  
 With a credit system per genre and permissions only granted for the top users within a genre, the community is being incentivized to make lots of genres and keep genre community small. Thus increasing their individual chances to unlock achievements. Making very small niche genres with a small community, quickly enables to be at the top, flooding the ecosystem with useless registries instead of establishing the perfect genre equilibrium.
