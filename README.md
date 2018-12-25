@@ -21,7 +21,7 @@ Table of Contents
     + [Contributor](#contributor)
     + [Curator](#curator)
   * [Further Information](#further-information)
-  * [Developer Setup](developer-setup)
+  * [Developer Setup](#developer-setup)
   * [License](#license)
 
 
