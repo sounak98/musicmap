@@ -21,6 +21,7 @@ Table of Contents
     + [Contributor](#contributor)
     + [Curator](#curator)
   * [Further Information](#further-information)
+  * [Developer Setup](developer-setup)
   * [License](#license)
 
 
@@ -124,6 +125,28 @@ Curators judiciously maintain the different registries by voting bad entries out
 [Game Mechanics & Incentives](./specs/mechanics_part_i.md)  
 [Roadmap & Capabilities](./specs/roadmap.md)
 
+## Developer Setup
+
+1. Clone this repo using `git clone https://github.com/oceanprotocol/musicmap.git`
+2. cd to  `server/`
+3. Inside `server/', add `.env` file shown below 
+```
+MONGODB_URL=mongodb://localhost:27017/musicmap
+HTTP_SERVER_PORT=4000
+HTTPS_SERVER_PORT=4001
+SERVER_KEY_PATH=<you-can-leave-it-blank>
+SERVER_CRT_PATH=<you-can-leave-it-blank>
+CA_CRT_PATH=<you-can-leave-it-blank>
+SPOTIFY_CLIENT_ID=<your-spotify-client-id> //not needed if you are not using or working on spotify
+SPOTIFY_CLIENT_SECRET=<your-spotify-secret-key> //not needed if you are not using or working on spotify
+SPOTIFY_TOKEN_URL=https://accounts.spotify.com/api/token
+SPOTIFY_WEB_API_BASE_URL=https://api.spotify.com/v1
+
+```
+4. Start mongodb server locally ([download one from here ](https://www.mongodb.com/download-center/community))
+5. Start the server using `npm install & start`. If all went well, server will be started on your given port
+6. In a new terminal, `cd client`.
+7. Start client using `npm install & start`. If all went well, react app will open up in the browser.
 
 ## License
 
