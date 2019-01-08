@@ -21,27 +21,27 @@ If allowed by artist, grant user downloads
 
 Possible achievements can be:
 
-* X Expert                 Most points within one (super)genre (+second and third place)
-* Generalist             Curate within 50%/75%/all different genres
-* X Master                Curate all genres within a specific supergenre (at least 10/100/1000 songs)
-* Explorer                 Curate within at least 5/10/20 different genres
-* Restorer                Challenge successfully at least 50/100/200 songs
-* Diplomat               Vote at least 100/500/1000 times
-* Universalist           Curate (at least one genre) 50%/75%/100% of all supergenres
-* Flawless                 Propose at least 100 songs without a successful challenge
-* X Specialist            Propose minimum 100/500/1000 songs, challenge successfully minimum 5/10/15 songs, cast minimum 50/150/250 votes, all within the same genre
-* X Creator               Creator of that genre (after a successful incubation period and a minimum filling of 100 songs)
-* X Guardian            Early filler of that genre (responsible for filling 10/25/50% of first 1000 songs)
-* X Connaisseur       Propose successfully at least 100/200/500 songs after a genre already has 50.000 songs
-* Custodian              Successfully delete 1/2/5 specific genres
-* X Arbiter               User becomes moderator (and vice and third) for that genre portal (choose artwork?) after Expert and Specialist and Oracle check
-* X Oracle                 Propose from at least 50/100/200 different artists within a single genre
-* Editor                     Contribute to WIKI content
-* Patron                    Reach a total of 500/1000/2000 proposed songs
-* Judicator                Challenge and successfully re-propose (in a different genre) at least 50/100/200 songs
-* X Authority           Make at least 10/20/50 edits or contributions to that genre’s WIKI content
-* Architect               Successfully determine a genre as a subgenre of another one (important for visual clutter maintenance)
-* Hierophant           Propose minimum 1/5/10 songs in all different genres
+* **X Expert:**                 Most points within one (super)genre (+second and third place)
+* **Generalist:**             Curate within 50%/75%/all different genres
+* **X Master:**                Curate all genres within a specific supergenre (at least 10/100/1000 songs)
+* **Explorer:**                Curate within at least 5/10/20 different genres
+* **Restorer:**                Challenge successfully at least 50/100/200 songs
+* **Diplomat:**               Vote at least 100/500/1000 times
+* **Universalist:**           Curate (at least one genre) 50%/75%/100% of all supergenres
+* **Flawless:**                 Propose at least 100 songs without a successful challenge
+* **X Specialist:**            Propose minimum 100/500/1000 songs, challenge successfully minimum 5/10/15 songs, cast minimum 50/150/250 votes, all within the same genre
+* **X Creator:**               Creator of that genre (after a successful incubation period and a minimum filling of 100 songs)
+* **X Guardian:**            Early filler of that genre (responsible for filling 10/25/50% of first 1000 songs)
+* **X Connaisseur:**       Propose successfully at least 100/200/500 songs after a genre already has 50.000 songs
+* **Custodian:**              Successfully delete 1/2/5 specific genres
+* **X Arbiter:**               User becomes moderator (and vice and third) for that genre portal (choose artwork?) after Expert and Specialist and Oracle check
+* **X Oracle:**                 Propose from at least 50/100/200 different artists within a single genre
+* **Editor:**                     Contribute to WIKI content
+* **Patron:**                    Reach a total of 500/1000/2000 proposed songs
+* **Judicator:**                Challenge and successfully re-propose (in a different genre) at least 50/100/200 songs
+* **X Authority:**           Make at least 10/20/50 edits or contributions to that genre’s WIKI content
+* **Architect:**               Successfully determine a genre as a subgenre of another one (important for visual clutter maintenance)
+* **Hierophant:**           Propose minimum 1/5/10 songs in all different genres
 
 
 ![achievements tree](./images/sketch-achievements.png)
@@ -122,3 +122,5 @@ Overloading of songs in one genre?
 The following sketch shows the main genre UI, with playlist, WIKI section and genre metadata. For each song, the curation status is displayed, allowing the user to see whether a song is being challenged or pending and so forth.
 
 ![genre-portal](./UI%20sketch%20-%20genre%20portal%20IIa.png)
+
+Continue reading the Game Mechanics [here](https://github.com/oceanprotocol/musicmap/blob/master/specs/mechanics_part_iii.md).
