@@ -152,4 +152,4 @@ With a credit system per genre and permissions only granted for the top users wi
     Also registries that don’t have a total score of at least X, will not be pushed to the map.
 
 
-
+#### Continue reading the game mechanics [here](https://github.com/oceanprotocol/musicmap/blob/master/specs/mechanics_part_iii.md).
