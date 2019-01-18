@@ -6,12 +6,13 @@ import https from 'https';
 import fs from 'fs';
 import path from 'path';
 import cors from 'cors';
+import passport from 'passport';
 import { 
         HTTP_SERVER_PORT,
         SERVER_KEY_PATH,
         SERVER_CRT_PATH,
         CA_CRT_PATH } from 'babel-dotenv';
-import { spotifyRouter, unknownRouter, trackRouter } from './routes';
+import { authRouter, spotifyRouter, unknownRouter, trackRouter } from './routes';
 import { handleErrors } from './middlewares/errorHandler';
 const db = require('./db-connect.js');
 
@@ -29,6 +30,9 @@ let corsOptions = {
   }
 }
 
+// configure passport
+app.use(passport.initialize());
+
 // configure CORS headers
 app.use(cors());
 
@@ -41,6 +45,7 @@ app.use(express.json());
 //handle known routes
 app.use('/', trackRouter);
 app.use('/', spotifyRouter);
+app.use('/', authRouter);
 
 //handle unknown routes
 app.use('*',unknownRouter);
