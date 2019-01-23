@@ -1,6 +1,6 @@
 const request = require('supertest')
 const dotenv = require('dotenv');
-let { app } = require('../dist/index'); 
+let { app } = require('../dist/index');
 
 dotenv.config();
 
@@ -15,6 +15,7 @@ var coinType = 'CRD';
 
 var username = 'test';
 var password = 'password';
+var newPassword = 'helloworld';
 var email = 'test@test.com';
 var genericUsername = 'test1';
 var genericEmail = 'test1@test.com';
@@ -154,6 +155,31 @@ describe('running tests for API', function () {
     request(httpServer)
       .post('/login')
       .send({ genericEmail, password })
+      .set("Content-Type", "application/x-www-form-urlencoded")
+      .expect(401, done);
+  })
+
+  it ('CAN change the user password', function(done) {
+    request(httpServer)
+      .post('/changePassword')
+      .send({ password: newPassword })
+      .set("Content-Type", "application/x-www-form-urlencoded")
+      .set("Authorization", "Bearer " + token)
+      .expect(200, done);
+  })
+
+  it ('CAN login with new credentials', function(done) {
+    request(httpServer)
+      .post('/login')
+      .send({ email, password: newPassword })
+      .set("Content-Type", "application/x-www-form-urlencoded")
+      .expect(200, done);
+  })
+
+  it ('CANNOT login with old credentials', function(done) {
+    request(httpServer)
+      .post('/login')
+      .send({ email, password })
       .set("Content-Type", "application/x-www-form-urlencoded")
       .expect(401, done);
   })

@@ -22,10 +22,27 @@ const verifyPassword = (password, hash, cb) => {
     });
 }
 
+const changePassword = (id, password, cb) => {
+    const saltRounds = 10;
+    bcrypt.hash(password, saltRounds, (err, hash) => {
+        UserModel.findOneAndUpdate({ _id: id }, { password: hash }, { new: true }).exec((err, user) => {
+            if (err) {
+                cb(false);
+            }
+            if (!user) {
+                cb(false);
+            }
+            else {
+                cb(true);
+            }
+        });
+    })
+}
+
 const removeUser = (id, cb) => {
     UserModel.findOneAndRemove({ _id: id }).exec((err, user) => {
         if (err) {
-            cb(err);
+            cb(false);
         }
         if (!user) {
             cb(false);
@@ -36,4 +53,4 @@ const removeUser = (id, cb) => {
     });
 };
 
-export { UserModel, saveUser, verifyPassword, removeUser };
+export { UserModel, saveUser, verifyPassword, changePassword, removeUser };

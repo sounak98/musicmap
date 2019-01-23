@@ -5,13 +5,13 @@ import _ from 'lodash';
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
-import { UserModel, saveUser, verifyPassword, removeUser } from '../models/userModel';
+import { UserModel, saveUser, verifyPassword, changePassword, removeUser } from '../models/userModel';
 import { jwtOptions } from '../passport';
 import { ok } from 'assert';
 
 const authRouter = express.Router();
 
-authRouter.post("/login", async (req, res) => {
+authRouter.post("/login", (req, res) => {
     if (req.body.email && req.body.password) {
         var email = req.body.email;
         var password = req.body.password;
@@ -25,7 +25,7 @@ authRouter.post("/login", async (req, res) => {
             res.status(401).json({ message: "no such user found" });
         }
         else {
-            verifyPassword(password, user.password, (result) => {
+            verifyPassword(password, user.password, result => {
                 if (result) {
                     var payload = { id: user._id };
                     var token = jwt.sign(payload, jwtOptions.secretOrKey);
@@ -42,12 +42,23 @@ authRouter.post("/login", async (req, res) => {
     });
 });
 
-authRouter.get('/protected', passport.authenticate('jwt', { session: false }), async (req, res) => {
+authRouter.post("/changePassword", passport.authenticate('jwt', { session: false }), (req, res) => {
+    changePassword(req.user.id, req.body.password, result => {
+        if (result) {
+            res.json({ status: "ok", message: "password changed successfully" });
+        }
+        else {
+            res.status(400);
+        }
+    });
+});
+
+authRouter.get('/protected', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({ status: "ok", message: "Welcome!" });
 });
 
-authRouter.get('/remove', passport.authenticate('jwt', { session: false }), async (req, res) => {
-    removeUser(req.user._id, (result) => {
+authRouter.get('/remove', passport.authenticate('jwt', { session: false }), (req, res) => {
+    removeUser(req.user._id, result => {
         if (result) {
             res.json({ status: "ok", message: "user deleted" })
         }
@@ -70,7 +81,7 @@ authRouter.get('/available', (req, res) => {
     })
 });
 
-authRouter.post('/signup', async (req, res) => {
+authRouter.post('/signup', (req, res) => {
     let newUser = {
         username: req.body.username,
         email: req.body.email,
