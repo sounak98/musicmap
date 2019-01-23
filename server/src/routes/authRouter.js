@@ -5,7 +5,7 @@ import _ from 'lodash';
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
-import { UserModel, saveUser, verifyPassword } from '../models/userModel';
+import { UserModel, saveUser, verifyPassword, removeUser } from '../models/userModel';
 import { jwtOptions } from '../passport';
 import { ok } from 'assert';
 
@@ -29,7 +29,10 @@ authRouter.post("/login", async (req, res) => {
                 if (result) {
                     var payload = { id: user._id };
                     var token = jwt.sign(payload, jwtOptions.secretOrKey);
-                    res.json({ status: "ok", token: token });
+                    res.json({ status: "ok", token, user: {
+                        "username": user.username,
+                        "email": user.email
+                    } });
                 }
                 else {
                     res.status(401).json({ message: "password did not match" });
@@ -43,6 +46,30 @@ authRouter.get('/protected', passport.authenticate('jwt', { session: false }), a
     res.json({ status: "ok", message: "Welcome!" });
 });
 
+authRouter.get('/remove', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    removeUser(req.user._id, (result) => {
+        if (result) {
+            res.json({ status: "ok", message: "user deleted" })
+        }
+        else {
+            res.status(400).json({ message: err });
+        }
+    });    
+});
+
+authRouter.get('/available', (req, res) => {
+    const username = req.query.username;
+    
+    UserModel.findOne({ username }).exec((err, user) => {
+        if (!user) {
+            res.json({ message: true });
+        }
+        else {
+            res.json({ message: false });
+        }
+    })
+});
+
 authRouter.post('/signup', async (req, res) => {
     let newUser = {
         username: req.body.username,
@@ -51,10 +78,11 @@ authRouter.post('/signup', async (req, res) => {
     }
     saveUser(newUser, (err, data) => {
         if (err) {
-            res.json({ data: err });
-            return new Error(err);
+            res.status(400).json({ message: err._message });
         }
-        res.json({ status: "ok", message: "user created" });
+        else {
+            res.json({ status: "ok", message: "user created" });
+        }
     });
 });
 

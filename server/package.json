@@ -7,7 +7,8 @@
     "build": "babel ./src -d ./dist -s",
     "docker": "docker-compose stop && docker-compose rm -f && docker-compose pull && docker-compose up --build -d",
     "start": "npm run build && node dist/index.js",
-    "test": "npm run build && mocha",
+    "build-test": "npm run build && mocha",
+    "test": "mocha",
     "dev": "nodemon src/index.js --exec babel-node"
   },
   "repository": {

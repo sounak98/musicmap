@@ -16,10 +16,24 @@ const saveUser = (newUser, cb) => {
     });
 }
 
-const verifyPassword = async (password, hash, cb) => {
+const verifyPassword = (password, hash, cb) => {
     bcrypt.compare(password, hash, (err, res) => {
         cb(res);
     });
 }
 
-export { UserModel, saveUser, verifyPassword };
+const removeUser = (id, cb) => {
+    UserModel.findOneAndRemove({ _id: id }).exec((err, user) => {
+        if (err) {
+            cb(err);
+        }
+        if (!user) {
+            cb(false);
+        }
+        else {
+            cb(true);
+        }
+    });
+};
+
+export { UserModel, saveUser, verifyPassword, removeUser };
