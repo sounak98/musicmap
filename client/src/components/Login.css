@@ -31,10 +31,28 @@
 .form-item{
     font-family: 'Raleway', sans-serif;
     padding: 5px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     height: 30px;
     width: 16rem;
     border: 1px solid grey;
+}
+
+.footer-below{
+    margin-bottom: 0rem;
+}
+
+.form-item-footer{
+    padding-top: 5px;
+    margin-bottom: 1rem;
+    font-size: 11px;
+}
+
+.success {
+    color: green;
+}
+
+.failure {
+    color: red;
 }
 
 .form-submit{

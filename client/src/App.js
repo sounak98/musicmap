@@ -5,13 +5,20 @@ import {
   BrowserRouter as Router,
   Link,
   Route,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom'
+import ProtectedRoute from './components/ProtectedRoute';
+import NotFound from './components/NotFound';
 import Spotify from './containers/Spotify';
 import MusicPlayer from './components/MusicPlayer';
 import CoreGenre from './components/CoreGenre';
-import Login from './components/Login';
+import Logout from './components/Logout';
+import Auth from './components/Auth';
+import Profile from './components/Profile';
 import { loadCSS } from 'fg-loadcss/src/loadCSS';
+
+
 
 class App extends Component {
   constructor(props){
@@ -35,12 +42,16 @@ class App extends Component {
       <Provider store={store}>
        <>
         <Router>
-          <>
-            <Route exact path='/' component={CoreGenre} />
-            <Route exact path='/login' component={Login} />
-            <Route path='/callback' component={CoreGenre} />
-            <Route path='/spotify' component={CoreGenre} />
-          </>
+          <Switch>
+            <ProtectedRoute exact path='/' component={CoreGenre} />
+            <Route exact path='/auth' component={Auth} />
+            <Route exact path='/auth/**' component={Auth} />
+            <Route exact path='/logout' component={Logout} />
+            {/* <Route path='/callback' component={CoreGenre} /> */}
+            {/* <Route path='/spotify' component={CoreGenre} /> */}
+            <ProtectedRoute exact path='/profile' component={Profile} />
+            <Route path='*' component={NotFound} />
+          </Switch>
         </Router>  
         
       </>

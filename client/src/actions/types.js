@@ -11,3 +11,7 @@ export const SPOTIFY = {
     GET_ACCESS_TOKEN : 'GET_ACCESS_TOKEN',
     GET_TRACK_DETAILS : 'GET_TRACK_DETAILS'
 }
+
+export const AUTH = {
+    SET_CURRENT_USER : 'SET_CURRENT_USER'
+}

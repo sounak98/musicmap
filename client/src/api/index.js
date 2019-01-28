@@ -1,3 +1,4 @@
 import Spotify from './spotify';
+import Auth from './auth';
 
-export { Spotify }
+export { Spotify, Auth }

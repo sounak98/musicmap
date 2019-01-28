@@ -8,12 +8,31 @@ const saveUser = (newUser, cb) => {
     const saltRounds = 10;
     bcrypt.hash(newUser.password, saltRounds, (err, hash) => {
         newUser.password = hash;
+        let now = new Date();
+        newUser.createdOn = now;
+        newUser.lastModifiedOn = now;
+        newUser.lastLoginOn = now;
         let user = new UserModel(newUser);
         user.save((err, data) => {
             if (err) return cb(err);
             cb(null, data);
         });
     });
+}
+
+const updateLastLoginOn = (id, cb) => {
+    let now = new Date();
+    UserModel.findOneAndUpdate({ _id: id }, { lastLoginOn: now }, { new: true }).exec((err, user) => {
+        if (err) {
+            cb(false);
+        }
+        else if (!user) {
+            cb(false);
+        }
+        else {
+            cb(true);
+        }
+    })
 }
 
 const verifyPassword = (password, hash, cb) => {
@@ -25,11 +44,12 @@ const verifyPassword = (password, hash, cb) => {
 const changePassword = (id, password, cb) => {
     const saltRounds = 10;
     bcrypt.hash(password, saltRounds, (err, hash) => {
-        UserModel.findOneAndUpdate({ _id: id }, { password: hash }, { new: true }).exec((err, user) => {
+        let now = new Date();
+        UserModel.findOneAndUpdate({ _id: id }, { password: hash, lastModifiedOn: now }, { new: true }).exec((err, user) => {
             if (err) {
                 cb(false);
             }
-            if (!user) {
+            else if (!user) {
                 cb(false);
             }
             else {
@@ -44,7 +64,7 @@ const removeUser = (id, cb) => {
         if (err) {
             cb(false);
         }
-        if (!user) {
+        else if (!user) {
             cb(false);
         }
         else {
@@ -53,4 +73,15 @@ const removeUser = (id, cb) => {
     });
 };
 
-export { UserModel, saveUser, verifyPassword, changePassword, removeUser };
+const isUsernameAvailable = (username, cb) => {
+    UserModel.findOne({ username }).exec((err, user) => {
+        if (!user) {
+            cb(true);
+        }
+        else {
+            cb(false);
+        }
+    })
+}
+
+export { UserModel, saveUser, verifyPassword, changePassword, removeUser, isUsernameAvailable, updateLastLoginOn };

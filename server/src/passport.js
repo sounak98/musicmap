@@ -11,7 +11,7 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = 'mysecretkey';
 
 var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
-    UserModel.findOne({ _id: jwt_payload.id }).exec((err, user) => {
+    UserModel.findOne({ email: jwt_payload.email }).exec((err, user) => {
         if (err) {
             // check what will trigger this
         }

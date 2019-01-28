@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'typeface-roboto';
+import jwt from 'jsonwebtoken';
+import store from './store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core';
+import { setCurrentUser } from './actions/authActions';
+
 
 const customTheme = createMuiTheme({
     palette: {
@@ -15,6 +19,13 @@ const customTheme = createMuiTheme({
     }
 })
 
+if (localStorage.jwtToken) {
+    const payload = jwt.decode(localStorage.jwtToken);
+    store.dispatch(setCurrentUser({
+        email: payload.email,
+        username: payload.username
+    }));
+}
 
 const MusicMapApp = () => (
     <MuiThemeProvider theme={customTheme}>
