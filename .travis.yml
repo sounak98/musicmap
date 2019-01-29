@@ -8,7 +8,7 @@ install:
   - npm install
 
 script:
-  - cd client
+  - cd ../client
   - npm run test
   - npm run build
   - cd ../server
