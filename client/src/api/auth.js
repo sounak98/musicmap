@@ -61,7 +61,6 @@ export default class Auth {
         }
     }
 
-    // how to handle tokens?
     async changePassword(newPassword) {
         // accesses PROTECTED route
         // changes the password of an existing user
@@ -80,7 +79,7 @@ export default class Auth {
         }
     }
 
-    deleteUser(token) {
+    deleteUser() {
         // accesses PROTECTED route
         // deletes the current user
     }

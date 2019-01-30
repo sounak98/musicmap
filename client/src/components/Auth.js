@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import queryString from 'query-string';
 import Login from './Login';
 import Signup from './Signup';
 import Logout from './Logout'
@@ -17,10 +18,10 @@ class Auth extends Component {
     }
 
     componentWillMount() {
-        const redirect = this.props.match.url.substring(6);
-        if (redirect) {
-            console.log(redirect);
-            this.setState({ redirect });
+        const { next } = queryString.parse(this.props.location.search);
+        if (next) {
+            console.log(next);
+            this.setState({ next });
         }
     }
 
@@ -35,8 +36,8 @@ class Auth extends Component {
 
     render() {
         if (this.props.auth.isAuthenticated) {
-            if (this.state.redirect) {
-                return (<Redirect to={`/${this.state.redirect}`} />);
+            if (this.state.next) {
+                return (<Redirect to={`${this.state.next}`} />);
             }
             else {
                 return (<Redirect to="/" />);

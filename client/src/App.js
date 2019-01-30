@@ -49,7 +49,7 @@ class App extends Component {
             <Route exact path='/logout' component={Logout} />
             {/* <Route path='/callback' component={CoreGenre} /> */}
             {/* <Route path='/spotify' component={CoreGenre} /> */}
-            <ProtectedRoute exact path='/profile' component={Profile} />
+            <ProtectedRoute exact path='/u/profile' component={Profile} />
             <Route path='*' component={NotFound} />
           </Switch>
         </Router>  
