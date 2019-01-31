@@ -16,6 +16,7 @@ import {
 } from '../models/userModel';
 import { jwtOptions } from '../passport';
 import { ok } from 'assert';
+import { RSA_SSLV23_PADDING } from 'constants';
 
 const authRouter = express.Router();
 
@@ -66,12 +67,19 @@ authRouter.get("/getUser", passport.authenticate('jwt', { session: false }), (re
 });
 
 authRouter.post("/changePassword", passport.authenticate('jwt', { session: false }), (req, res) => {
-    changePassword(req.user.id, req.body.password, result => {
+    verifyPassword(req.body.oldPassword, req.user.password, result => {
         if (result) {
-            res.json({ status: "ok", message: "Password changed successfully" });
+            changePassword(req.user.id, req.body.newPassword, result => {
+                if (result) {
+                    res.json({ status: "ok", message: "Password changed successfully" });
+                }
+                else {
+                    res.status(400);
+                }
+            });
         }
         else {
-            res.status(400);
+            res.status(401).json({ message: "Password did not match" });
         }
     });
 });

@@ -26,8 +26,8 @@ class Profile extends Component {
         )
     }
 
-    async changePassword(password) {
-        const err = await auth.changePassword(password);
+    async changePassword(oldPassword, newPassword) {
+        const err = await auth.changePassword(oldPassword, newPassword);
         if (!err) {
             this.setState({ passwordChanged: true });
             console.log("User will be logged out for security reasons, login again to continue");
@@ -40,9 +40,10 @@ class Profile extends Component {
 
     render() {
         const validated = (
-            this.state.password &&                              // password is entered
-            this.state.repeatPassword &&                        // password is repeated
-            this.state.password == this.state.repeatPassword    // repeated password is same as the password
+            this.state.oldPassword &&                               // old password is entered
+            this.state.newPassword &&                               // new password is entered
+            this.state.repeatPassword &&                            // password is repeated
+            this.state.newPassword == this.state.repeatPassword     // repeated password is same as the password
         );
 
         if (this.state.passwordChanged) {
@@ -57,8 +58,15 @@ class Profile extends Component {
                     {this.state.validationError && <div className="form-item-footer failure">{this.state.validationError}</div>}
                         <input
                             className="form-item"
+                            placeholder="Old password goes here..."
+                            name="oldPassword"
+                            type="password"
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            className="form-item"
                             placeholder="New password goes here..."
-                            name="password"
+                            name="newPassword"
                             type="password"
                             onChange={this.handleChange}
                         />
@@ -80,7 +88,7 @@ class Profile extends Component {
                             value="SUBMIT"
                             type="submit"
                             disabled={!validated}
-                            onClick={async (e) => {e.preventDefault(); await this.changePassword(this.state.password);}}
+                            onClick={async (e) => {e.preventDefault(); await this.changePassword(this.state.oldPassword, this.state.newPassword);}}
                         />
                     </form>
                 </div>

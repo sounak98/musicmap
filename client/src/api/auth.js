@@ -61,7 +61,7 @@ export default class Auth {
         }
     }
 
-    async changePassword(newPassword) {
+    async changePassword(oldPassword, newPassword) {
         // accesses PROTECTED route
         // changes the password of an existing user
         const resp = await fetch(`http://localhost:4000/changePassword`, {
@@ -71,11 +71,13 @@ export default class Auth {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'password': newPassword
+                'oldPassword': oldPassword,
+                'newPassword': newPassword
             })
         });
+        const data = await resp.json();
         if (resp.status != 200) {
-            return resp.statusText;
+            return data.message;
         }
     }
 
